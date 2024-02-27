@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "imqcam-uploaders"
+version = "0.1.0"
+description = "A package for uploading files and metadata to the IMQCAM Girder instance/data.imqcam.org"
+authors = ["Maggie Eminizer <margaret.eminizer@gmail.com>"]
+license = "GPLv3"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+girder-client = "^3.2.2"
+openmsitoolbox = "^1.2.3"
+
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.0.2"
+faker = "^23.3.0"
+black = "^24.2.0"
+pylint = "^3.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
