@@ -10,19 +10,9 @@ import pytest
 from faker import Faker
 from imqcam_uploaders.utilities.argument_parsing import json_str_or_filepath
 
+# pylint: disable=wrong-import-order, unused-import
+from fixtures import random_json_string
 
-@pytest.fixture
-def random_json_string():
-    fake = Faker()
-    data = {
-        "name": fake.name(),
-        "address": fake.address(),
-        "phone_number": fake.phone_number(),
-        "email": fake.email(),
-        "job": fake.job(),
-        "company": fake.company(),
-    }
-    return json.dumps(data)
 
 @pytest.fixture
 def random_not_json_string():
@@ -33,16 +23,18 @@ def random_not_json_string():
         try:
             json.loads(text)
         except json.decoder.JSONDecodeError:
-            valid=True
+            valid = True
     return text
+
 
 def test_json_str_or_filepath_with_str(random_json_string):
     loaded = json.loads(random_json_string)
     retval = json_str_or_filepath(random_json_string)
     assert loaded == retval
 
+
 def test_json_str_or_filepath_fail_with_str(random_not_json_string):
-    with pytest.raises(json.decoder.JSONDecodeError):
+    with pytest.raises(ValueError):
         _ = json_str_or_filepath(random_not_json_string)
 
 
@@ -63,6 +55,7 @@ def test_json_str_or_filepath_with_filepath(random_json_string):
     finally:
         shutil.rmtree(test_file_path.parent)
 
+
 def test_json_str_or_filepath_fail_with_filepath(random_not_json_string):
     test_file_path = (
         pathlib.Path(__file__).parent
@@ -74,7 +67,7 @@ def test_json_str_or_filepath_fail_with_filepath(random_not_json_string):
     try:
         with open(test_file_path, "w") as fp:
             fp.write(random_not_json_string)
-        with pytest.raises(json.decoder.JSONDecodeError):
+        with pytest.raises(ValueError):
             _ = json_str_or_filepath(test_file_path)
     finally:
         shutil.rmtree(test_file_path.parent)

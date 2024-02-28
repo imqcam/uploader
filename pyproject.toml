@@ -23,6 +23,13 @@ pylint = "^3.1.0"
 coverage = "^7.4.3"
 pytest-cov = "^4.1.0"
 
+[tool.pytest.ini_options]
+addopts = "-s --cov=imqcam_uploaders --cov-report=term-missing"
+filterwarnings = [
+    "error",
+    'ignore:pkg_resources is deprecated:DeprecationWarning',
+]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
