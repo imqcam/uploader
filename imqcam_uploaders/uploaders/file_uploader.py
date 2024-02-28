@@ -8,7 +8,7 @@ from openmsitoolbox import Runnable, LogOwner
 from ..utilities.argument_parsing import IMQCAMArgumentParser
 
 
-class IMQCAMUploader(Runnable, LogOwner):
+class IMQCAMFileUploader(Runnable, LogOwner):
 
     ARGUMENT_PARSER_TYPE = IMQCAMArgumentParser
 
@@ -201,7 +201,7 @@ class IMQCAMUploader(Runnable, LogOwner):
 
 
 def main(args=None):
-    IMQCAMUploader.run_from_command_line(args)
+    IMQCAMFileUploader.run_from_command_line(args)
 
 
 if __name__ == "__main__":
