@@ -27,6 +27,7 @@ class IMQCAMUploader(Runnable, LogOwner):
     def upload_file(
         self,
         filepath,
+        metadata=None,
         relative_to=None,
         root_folder_id=None,
         collection_name=None,
@@ -63,6 +64,8 @@ class IMQCAMUploader(Runnable, LogOwner):
             progressCallback=lambda x: self.__upload_callback(x, progress_bar),
         )
         progress_bar.update(new_file["size"] - progress_bar.n)
+        if metadata is not None:
+            self._girder_client.addMetadataToItem(new_file["itemId"],metadata)
         progress_bar.close()
         self.logger.info("Done!")
 
@@ -158,6 +161,7 @@ class IMQCAMUploader(Runnable, LogOwner):
             "filepath",
             "api_url",
             "api_key",
+            "metadata_json",
             "relative_to",
             "root_folder_id",
             "collection_name",
@@ -188,6 +192,7 @@ class IMQCAMUploader(Runnable, LogOwner):
         # upload the given file
         uploader.upload_file(
             args.filepath,
+            metadata=args.metadata_json,
             relative_to=args.relative_to,
             root_folder_id=args.root_folder_id,
             collection_name=args.collection_name,

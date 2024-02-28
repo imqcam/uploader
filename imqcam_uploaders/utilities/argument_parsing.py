@@ -1,9 +1,30 @@
-" A central location to specify command-line arguments for programs "
+" Command-line arguments for programs and parser callbacks "
 
 # imports
 import os
+import pathlib
+import json
 from openmsitoolbox import OpenMSIArgumentParser
 from openmsitoolbox.argument_parsing.parser_callbacks import existing_file, existing_dir
+
+
+def json_str_or_filepath(argstring):
+    """A JSON-formatted string, or path to a json file, given as a str and returned
+    deserialized to a dictonary
+    """
+    arg_as_path = pathlib.Path(argstring)
+    if arg_as_path.is_file():
+        with open(arg_as_path, "r") as argfile:
+            try:
+                return json.load(argfile)
+            except json.decoder.JSONDecodeError as exc:
+                raise ValueError(
+                    f"ERROR: {argstring} is a file, but not decodable as JSON!"
+                ) from exc
+    try:
+        return json.loads(argstring)
+    except json.decoder.JSONDecodeError as exc:
+        raise ValueError(f"ERROR: {argstring} is not decodable as JSON!") from exc
 
 
 class IMQCAMArgumentParser(OpenMSIArgumentParser):
@@ -77,6 +98,16 @@ class IMQCAMArgumentParser(OpenMSIArgumentParser):
                     "which files should be uploaded. A path to a subdirectory in the "
                     "Collection can be given using forward slashes. "
                     "Superseded if 'root_folder_id' is given."
+                ),
+            },
+        ],
+        "metadata_json": [
+            "optional",
+            {
+                "type": json_str_or_filepath,
+                "help": (
+                    "Path to a JSON file, or a JSON-formatted string of metadata to "
+                    "include with the upload"
                 ),
             },
         ],
