@@ -17,7 +17,7 @@ You'll want to make sure you're installing poetry on your bare system, so deacti
 
 ### Install the package and its dependencies
 
-The example below assumes you use conda to manage environments, but you can use pyenv or really any other virtual environment manager.
+The example below assumes you use conda to manage environments, but you can use pyenv or really any other virtual environment manager. In fact, if you skip the "create and activate" step below, Poetry will automatically create a virtual environment associated with the project for you when you run `poetry install` below.
 
 Create and activate a new conda environment:
 

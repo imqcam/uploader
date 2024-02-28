@@ -1,9 +1,12 @@
 """ Uploads a file to a Girder instance with some metadata """
 
 # imports
+import os
+from tqdm import tqdm
 import girder_client
 from openmsitoolbox import Runnable, LogOwner
 from ..utilities.argument_parsing import IMQCAMArgumentParser
+
 
 class IMQCAMUploader(Runnable, LogOwner):
 
@@ -44,12 +47,24 @@ class IMQCAMUploader(Runnable, LogOwner):
             rel_filepath, root_folder_id, collection_name, root_folder_path
         )
         # Upload the file
+        self.logger.info(f"Uploading {filepath} to {self.api_url}")
+        total_bytes = os.stat(filepath).st_size
+        progress_bar = tqdm(
+            desc=filepath.name,
+            total=total_bytes,
+            ncols=100,
+            unit="byte",
+            unit_scale=True,
+            ascii=True,
+        )
         new_file = self._girder_client.uploadFileToFolder(
             upload_folder_id,
             filepath,
-            progressCallback=self.__upload_callback,
+            progressCallback=lambda x: self.__upload_callback(x, progress_bar),
         )
-        print(f"new file = {new_file}")
+        progress_bar.update(new_file["size"] - progress_bar.n)
+        progress_bar.close()
+        self.logger.info("Done!")
 
     def __get_upload_folder_id(
         self, rel_filepath, root_folder_id, collection_name, root_folder_path
@@ -76,9 +91,9 @@ class IMQCAMUploader(Runnable, LogOwner):
             exists = False
             # if a folder with the name already exists, just set the ID and continue
             for resp in self._girder_client.listFolder(upload_folder_id):
-                if resp["_modelType"]=="folder" and resp["name"]==new_folder_name:
+                if resp["_modelType"] == "folder" and resp["name"] == new_folder_name:
                     upload_folder_id = resp["_id"]
-                    exists=True
+                    exists = True
                     break
             if exists:
                 continue
@@ -131,8 +146,8 @@ class IMQCAMUploader(Runnable, LogOwner):
                 self.logger.error(errmsg, exc_type=ValueError)
         return folder_id
 
-    def __upload_callback(self, info_dict):
-        print(info_dict)
+    def __upload_callback(self, info_dict, pbar):
+        pbar.update(info_dict["current"] - pbar.n)
 
     @classmethod
     def get_command_line_arguments(cls):

@@ -10,6 +10,7 @@ readme = "README.md"
 python = "^3.12"
 girder-client = "^3.2.2"
 openmsitoolbox = "^1.2.3"
+tqdm = "^4.66.2"
 
 [tool.poetry.group.test]
 optional = true
