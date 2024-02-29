@@ -1,11 +1,17 @@
 " Fixtures used in more than one test "
 
 # imports
+import pathlib
 import json
 import pytest
 from faker import Faker
 import girder_client
 from imqcam_uploaders.utilities.argument_parsing import IMQCAMArgumentParser
+
+
+@pytest.fixture
+def local_tests_dir():
+    return pathlib.Path(__file__).parent
 
 
 @pytest.fixture

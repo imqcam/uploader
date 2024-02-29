@@ -8,7 +8,9 @@ import pathlib
 import json
 import requests
 import shutil
+import importlib.metadata
 import pytest
+from imqcam_uploaders.utilities.hashing import get_file_hash
 from imqcam_uploaders.utilities.girder import (
     get_girder_folder_id,
     get_girder_item_and_file_id,
@@ -17,6 +19,7 @@ from imqcam_uploaders.uploaders.file_uploader import IMQCAMFileUploader, main
 
 # pylint: disable=wrong-import-order, unused-import
 from .fixtures import (
+    local_tests_dir,
     default_girder_client,
     default_collection_name,
     ci_testing_girder_folder_name,
@@ -31,6 +34,7 @@ def random_100_kb():
 
 
 def test_file_uploader(
+    local_tests_dir,
     default_girder_client,
     default_collection_name,
     ci_testing_girder_folder_name,
@@ -41,7 +45,7 @@ def test_file_uploader(
     client = default_girder_client
     collection_name = default_collection_name
     root_folder_name = ci_testing_girder_folder_name
-    test_dir = pathlib.Path(__file__).parent / test_file_uploader.__name__
+    test_dir = local_tests_dir / test_file_uploader.__name__
     test_subdir = test_dir / "subdir"
     test_filepath = test_subdir / "test_file.bin"
     girder_filepath = pathlib.Path(root_folder_name) / test_filepath.relative_to(
@@ -78,7 +82,10 @@ def test_file_uploader(
         )
         # make sure the file contents and metadata match
         metadata_read_back = client.getItem(item_id)["meta"]
-        assert json.loads(random_json_string) == metadata_read_back
+        ref_metadata = json.loads(random_json_string)
+        ref_metadata["uploaderVersion"] = importlib.metadata.version("imqcam_uploaders")
+        ref_metadata["checksum"] = {"sha256": get_file_hash(test_filepath)}
+        assert ref_metadata == metadata_read_back
         filepath_read_back = test_dir / "test_file_read_back.bin"
         client.downloadFile(file_id, str(filepath_read_back))
         with open(test_filepath, "rb") as ref_fp:
@@ -112,14 +119,14 @@ def test_file_uploader_bad_credentials():
 
 
 def test_file_uploader_root_folder_id(
+    local_tests_dir,
     default_girder_client,
     ci_testing_girder_folder_id,
     random_100_kb,
-    random_json_string,
 ):
     # make sure the test file hasn't already been uploaded
     client = default_girder_client
-    test_dir = pathlib.Path(__file__).parent / test_file_uploader.__name__
+    test_dir = local_tests_dir / test_file_uploader_root_folder_id.__name__
     test_filepath = test_dir / "test_file_2.bin"
     girder_filepath = test_filepath.relative_to(test_dir.parent)
     with pytest.raises(ValueError):
@@ -139,8 +146,6 @@ def test_file_uploader_root_folder_id(
         # run the file uploader
         args = [
             str(test_filepath),
-            "--metadata_json",
-            random_json_string,
             "--relative_to",
             str(test_dir.parent),
             "--root_folder_id",
@@ -158,7 +163,10 @@ def test_file_uploader_root_folder_id(
         )
         # make sure the file contents and metadata match
         metadata_read_back = client.getItem(item_id)["meta"]
-        assert json.loads(random_json_string) == metadata_read_back
+        ref_metadata = {}
+        ref_metadata["uploaderVersion"] = importlib.metadata.version("imqcam_uploaders")
+        ref_metadata["checksum"] = {"sha256": get_file_hash(test_filepath)}
+        assert ref_metadata == metadata_read_back
         filepath_read_back = test_dir / "test_file_read_back.bin"
         client.downloadFile(file_id, str(filepath_read_back))
         with open(test_filepath, "rb") as ref_fp:
@@ -184,13 +192,14 @@ def test_file_uploader_root_folder_id(
 
 
 def test_file_uploader_bad_relative_to(
+    local_tests_dir,
     default_girder_client,
     ci_testing_girder_folder_id,
     random_100_kb,
     random_json_string,
 ):
     client = default_girder_client
-    test_dir = pathlib.Path(__file__).parent / test_file_uploader.__name__
+    test_dir = local_tests_dir / test_file_uploader_bad_relative_to.__name__
     test_filepath = test_dir / "test_file_3.bin"
     relative_to_dir = test_dir / "not_relative_to_this"
     # create the test directory and file

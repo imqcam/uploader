@@ -2,10 +2,12 @@
 
 # imports
 import os
+import importlib.metadata
 from tqdm import tqdm
 import girder_client
 from openmsitoolbox import Runnable, LogOwner
 from ..utilities.argument_parsing import IMQCAMArgumentParser
+from ..utilities.hashing import get_file_hash
 from ..utilities.girder import get_girder_folder_id, get_girder_item_id
 
 
@@ -23,6 +25,7 @@ class IMQCAMFileUploader(Runnable, LogOwner):
     """
 
     ARGUMENT_PARSER_TYPE = IMQCAMArgumentParser
+    HASH_CHUNK_SIZE = 65536
 
     def __init__(self, api_url, api_key, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -37,6 +40,7 @@ class IMQCAMFileUploader(Runnable, LogOwner):
                 exc_info=exc,
                 reraise=True,
             )
+        self._uploader_version = importlib.metadata.version("imqcam_uploaders")
 
     def upload_file(
         self,
@@ -98,25 +102,10 @@ class IMQCAMFileUploader(Runnable, LogOwner):
                     reraise=True,
                 )
         # check if the file already exists
-        try:
-            if root_folder_id is not None:
-                item_id = get_girder_item_id(
-                    self._girder_client, rel_filepath, root_folder_id=root_folder_id
-                )
-            else:
-                item_id = get_girder_item_id(
-                    self._girder_client,
-                    root_folder_path / rel_filepath,
-                    collection_name=collection_name,
-                )
-            resp = self._girder_client.isFileCurrent(item_id, filepath.name, filepath)
-            if resp is not None and resp[1]:
-                self.logger.info(
-                    f"{filepath} already exists in Girder and will be skipped"
-                )
-                return
-        except ValueError:
-            pass
+        if self.__file_already_exists(
+            filepath, rel_filepath, root_folder_id, collection_name, root_folder_path
+        ):
+            return
         # Get the ID of the Girder folder to upload the file to
         # If no root folder ID was given, find it based on the collection name
         # and root folder path
@@ -134,6 +123,7 @@ class IMQCAMFileUploader(Runnable, LogOwner):
             create_if_not_found=True,
         )
         # Upload the file
+        file_hash = get_file_hash(filepath)
         self.logger.info(f"Uploading {filepath} to {self.api_url}")
         total_bytes = os.stat(filepath).st_size
         progress_bar = tqdm(
@@ -150,10 +140,37 @@ class IMQCAMFileUploader(Runnable, LogOwner):
             progressCallback=lambda x: self.__upload_callback(x, progress_bar),
         )
         progress_bar.update(new_file["size"] - progress_bar.n)
-        if metadata is not None:
-            self._girder_client.addMetadataToItem(new_file["itemId"], metadata)
+        if metadata is None:
+            metadata = {}
+        metadata["uploaderVersion"] = self._uploader_version
+        metadata["checksum"] = {"sha256": file_hash}
+        self._girder_client.addMetadataToItem(new_file["itemId"], metadata)
         progress_bar.close()
         self.logger.info("Done!")
+
+    def __file_already_exists(
+        self, filepath, rel_filepath, root_folder_id, collection_name, root_folder_path
+    ):
+        try:
+            if root_folder_id is not None:
+                item_id = get_girder_item_id(
+                    self._girder_client, rel_filepath, root_folder_id=root_folder_id
+                )
+            else:
+                item_id = get_girder_item_id(
+                    self._girder_client,
+                    root_folder_path / rel_filepath,
+                    collection_name=collection_name,
+                )
+            resp = self._girder_client.isFileCurrent(item_id, filepath.name, filepath)
+            if resp is not None and resp[1]:
+                self.logger.info(
+                    f"{filepath} already exists in Girder and will be skipped"
+                )
+                return True
+        except ValueError:
+            pass
+        return False
 
     def __upload_callback(self, info_dict, pbar):
         pbar.update(info_dict["current"] - pbar.n)

@@ -7,15 +7,13 @@ import pathlib
 import subprocess
 import pytest
 
+# pylint: disable=unused-import
+from .fixtures import local_tests_dir
+
 
 @pytest.fixture
 def local_package_dir():
     return pathlib.Path(__file__).parent.parent / "imqcam_uploaders"
-
-
-@pytest.fixture
-def local_tests_dir():
-    return pathlib.Path(__file__).parent
 
 
 def test_package_formatting(local_package_dir):
