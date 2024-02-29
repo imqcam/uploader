@@ -10,6 +10,17 @@ from ..utilities.girder import get_girder_folder_id, get_girder_item_id
 
 
 class IMQCAMFileUploader(Runnable, LogOwner):
+    """Runnable that uploads a single file to a Girder instance.
+
+    Args:
+        api_url (str): the URL of the Girder instance to connect to
+        api_key (str): the API key to use for connecting to Girder
+        args (list): passed to super().__init__()
+        kwargs (dict): passed to super().__init__()
+
+    Raises:
+        Exception: If authentication to the Girder instance fails
+    """
 
     ARGUMENT_PARSER_TYPE = IMQCAMArgumentParser
 
@@ -20,7 +31,7 @@ class IMQCAMFileUploader(Runnable, LogOwner):
         try:
             self._girder_client = girder_client.GirderClient(apiUrl=self.api_url)
             self._girder_client.authenticate(apiKey=api_key)
-        except Exception as exc:
+        except Exception as exc:  # pylint: disable=broad-exception-caught
             self.logger.error(
                 f"ERROR: failed to authenticate to Girder at {api_url}!",
                 exc_info=exc,
@@ -36,16 +47,45 @@ class IMQCAMFileUploader(Runnable, LogOwner):
         collection_name=None,
         root_folder_path=None,
     ):
+        """Upload a file on disk to the Girder instance, with optional metadata.
+
+        If the file already exists in Girder with the same size as on disk, it is
+        not edited at all.
+
+        Args:
+            filepath (pathlib.Path): Path to the file that should be uploaded on disk
+            metadata (dict, optional): dictionary of metadata to add to the uploaded file
+            relative_to (pathlib.Path, optional): An existing directory that should be
+                considered the "root" directory for the upload. The directory tree beyond
+                this point will be replicated in Girder, creating new Folders if needed.
+            root_folder_id (str, optional): The ID of the Girder Folder that should be
+                considered the "root" for the upload on the destination side. Folders
+                will be created inside this Folder as needed to replicate the directory
+                structure of the uploaded file relative to its root directory. If this
+                parameter is given, it supersedes both "collection_name" and
+                "root_folder_path".
+            collection_name (str, optional): The name of the Girder Collection under
+                which the file should be uploaded. Superseded by "root_folder_id" if
+                that argument is given.
+            root_folder_path (pathlib.Path, optional): A Path representation of the
+                Girder Folder (inside the "collection_name" Collection) that should
+                be considered the "root" on the upload side. Superseded by
+                "root_folder_id" if that argument is given.
+
+        Raises:
+            ValueError: If "filepath" is not relative to "relative_to"
+        """
         # Log a warning if a root folder ID was given alongside
         # a collection name/root folder path
         if root_folder_id is not None and (
             collection_name is not None or root_folder_path is not None
         ):
-            warnmsg = (
-                "WARNING: A root folder ID was given, so the collection name/root "
-                "folder path arguments are being superseded!"
+            self.logger.warning(
+                (
+                    "WARNING: A root folder ID was given, so the collection name/root "
+                    "folder path arguments are being superseded!"
+                )
             )
-            self.logger.warning(warnmsg)
         # If relative_to was given, make sure it can actually be used
         rel_filepath = filepath.relative_to(filepath.parent)
         if relative_to is not None:
@@ -167,4 +207,9 @@ class IMQCAMFileUploader(Runnable, LogOwner):
 
 
 def main(args=None):
+    """Run the "run_from_command_line" method of the IMQCAMFileUploader
+
+    Args:
+        args (list): list of command-line arguments to send to run_from_command_line
+    """
     IMQCAMFileUploader.run_from_command_line(args)

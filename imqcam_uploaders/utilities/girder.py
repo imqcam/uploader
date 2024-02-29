@@ -12,6 +12,30 @@ def get_girder_folder_id(
     create_if_not_found=False,
     create_as_public=True,
 ):
+    """Return the ID of a particular Girder Folder.
+
+    Args:
+        client (girder_client.GirderClient): The Girder client to use
+        folder_rel_path (pathlib.Path or str): The path to the desired folder, relative
+            to some root location determined by other arguments
+        root_folder_id (str, optional): ID of the folder that "folder_rel_path" is
+            relative to. Either this OR "collection_name" must be given.
+        collection_name (str, optional): Name of the Collection that "folder_rel_path"
+            is relative to. Either this OR "root_folder_id" must be given.
+        create_if_not_found (bool, optional): If True, any missing Folders in the path to
+            the desired Folder will be created
+        create_as_public (bool, optional): If True, any created Folders will be public
+
+    Returns:
+        str: ID of the Girder Folder located at
+            [root_folder_id OR collection_name]/folder_rel_path
+
+    Raises:
+        ValueError: If both or neither of "root_folder_id" and "collection_name" are
+            given (exactly one of them is required)
+        ValueError: If the desired Folder or any of its parents don't exist and
+            "create_if_not_found" is False
+    """
     if (root_folder_id is not None and collection_name is not None) or (
         root_folder_id is None and collection_name is None
     ):
@@ -44,48 +68,86 @@ def get_girder_folder_id(
             current_folder_id = resp["_id"]
         if not found:
             if create_if_not_found:
-                new_folder = client.createFolder(
+                current_folder_id = client.createFolder(
                     current_folder_id,
                     folder_name,
                     parentType=pftype,
                     public=create_as_public,
-                )
-                current_folder_id = new_folder["_id"]
+                )["_id"]
             else:
-                errmsg = (
-                    "ERROR: failed to find the Girder Folder "
-                    f"{'/'.join(folder_rel_path.parts[:idepth+1])} in the "
-                    f"{collection_name} Collection!"
+                raise ValueError(
+                    (
+                        "ERROR: failed to find the Girder Folder "
+                        f"{'/'.join(folder_rel_path.parts[:idepth+1])} in the "
+                        f"{collection_name} Collection!"
+                    )
                 )
-                raise ValueError(errmsg)
     return current_folder_id
 
 
-def get_girder_item_id(client, file_path, root_folder_id=None, collection_name=None):
+def get_girder_item_id(
+    client, item_rel_path, root_folder_id=None, collection_name=None
+):
+    """Return the ID of a particular Girder Item.
+
+    Args:
+        client (girder_client.GirderClient): The Girder client to use
+        item_rel_path (pathlib.Path or str): The path to the desired Item, relative
+            to some root location determined by other arguments
+        root_folder_id (str, optional): ID of the folder that "item_rel_path" is
+            relative to. Either this OR "collection_name" must be given.
+        collection_name (str, optional): Name of the Collection that "item_rel_path"
+            is relative to. Either this OR "root_folder_id" must be given.
+
+    Returns:
+        str: The ID of the specified Girder item
+
+    Raises:
+        ValueError: if not exactly one of "root_folder_id" and "collection_name" are given
+        ValueError: if the Item can't be found at the given path
+    """
     folder_id = get_girder_folder_id(
         client,
-        file_path.parent,
+        item_rel_path.parent,
         root_folder_id=root_folder_id,
         collection_name=collection_name,
     )
     item_id = None
-    for resp in client.listItem(folder_id, name=file_path.name):
+    for resp in client.listItem(folder_id, name=item_rel_path.name):
         item_id = resp["_id"]
     if item_id is None:
         errmsg = (
-            f"Failed to find an Item called {file_path.name} in "
-            f"{collection_name}/{file_path.parent}"
+            f"Failed to find an Item called {item_rel_path.name} in "
+            f"{collection_name}/{item_rel_path.parent}"
         )
         raise ValueError(errmsg)
     return item_id
 
 
 def get_girder_item_and_file_id(
-    client, file_path, root_folder_id=None, collection_name=None
+    client, file_rel_path, root_folder_id=None, collection_name=None
 ):
+    """Return the IDs of a particular Girder File and its Item with the same name.
+
+    Args:
+        client (girder_client.GirderClient): The Girder client to use
+        file_rel_path (pathlib.Path or str): The path to the desired File, relative
+            to some root location determined by other arguments
+        root_folder_id (str, optional): ID of the folder that "file_rel_path" is
+            relative to. Either this OR "collection_name" must be given.
+        collection_name (str, optional): Name of the Collection that "file_rel_path"
+            is relative to. Either this OR "root_folder_id" must be given.
+
+    Returns:
+        tuple(str, str): The ID of the specified Girder Item and File, in that order
+
+    Raises:
+        ValueError: if not exactly one of "root_folder_id" and "collection_name" are given
+        ValueError: if the Item can't be found at the given path
+    """
     item_id = get_girder_item_id(
         client,
-        file_path,
+        file_rel_path,
         root_folder_id=root_folder_id,
         collection_name=collection_name,
     )

@@ -7,7 +7,7 @@ license = "GPLv3"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.9"
 girder-client = "^3.2.2"
 openmsitoolbox = "^1.2.3"
 tqdm = "^4.66.2"
@@ -24,11 +24,16 @@ coverage = "^7.4.3"
 pytest-cov = "^4.1.0"
 
 [tool.pytest.ini_options]
-addopts = "-s --cov=imqcam_uploaders --cov-report=term-missing"
+addopts = "-s --cov=imqcam_uploaders --cov-report=term-missing --cov-fail-under=100"
 filterwarnings = [
     "error",
     'ignore:pkg_resources is deprecated:DeprecationWarning',
 ]
+
+[tool.pylint]
+reports = "no"
+score = "no"
+max-args = 10
 
 [build-system]
 requires = ["poetry-core"]

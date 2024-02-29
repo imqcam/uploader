@@ -14,7 +14,7 @@ def json_str_or_filepath(argstring):
     """
     arg_as_path = pathlib.Path(argstring)
     if arg_as_path.is_file():
-        with open(arg_as_path, "r") as argfile:
+        with open(arg_as_path, "r") as argfile:  # pylint: disable=unspecified-encoding
             try:
                 return json.load(argfile)
             except json.decoder.JSONDecodeError as exc:

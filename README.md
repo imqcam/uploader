@@ -29,6 +29,12 @@ Navigate to this repository's directory, and install the `imqcam_uploader` packa
     cd uploader
     poetry install
 
+## Running tests
+
 You can pick up the optional dependencies needed for running CI tests with:
 
     poetry install --with test
+
+And you can run all of the CI tests for the package with:
+
+    poetry run pytest
