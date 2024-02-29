@@ -11,7 +11,7 @@ from faker import Faker
 from imqcam_uploaders.utilities.argument_parsing import json_str_or_filepath
 
 # pylint: disable=wrong-import-order, unused-import
-from fixtures import random_json_string
+from .fixtures import random_json_string
 
 
 @pytest.fixture

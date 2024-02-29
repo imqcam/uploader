@@ -92,7 +92,8 @@ class IMQCAMArgumentParser(OpenMSIArgumentParser):
         "root_folder_path": [
             "optional",
             {
-                "default": "Test",
+                "default": pathlib.Path("Test"),
+                "type": pathlib.Path,
                 "help": (
                     "The name of the Folder inside the top-level Collection relative to "
                     "which files should be uploaded. A path to a subdirectory in the "

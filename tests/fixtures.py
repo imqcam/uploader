@@ -4,6 +4,8 @@
 import pytest
 import json
 from faker import Faker
+import girder_client
+from imqcam_uploaders.utilities.argument_parsing import IMQCAMArgumentParser
 
 
 @pytest.fixture
@@ -18,3 +20,34 @@ def random_json_string():
         "company": fake.company(),
     }
     return json.dumps(data)
+
+@pytest.fixture
+def default_girder_client():
+    def_api_url = IMQCAMArgumentParser.ARGUMENTS["api_url"][1]["default"]
+    def_api_key = IMQCAMArgumentParser.ARGUMENTS["api_key"][1]["default"]
+    if def_api_key is None:
+        errmsg = (
+            "Failed to find the default value of the Girder API key! "
+            "Is the environment variable set?"
+        )
+        raise RuntimeError(errmsg)
+    try:
+        client = girder_client.GirderClient(apiUrl=def_api_url)
+        client.authenticate(apiKey=def_api_key)
+    except Exception as exc:
+        raise RuntimeError(
+            "Failed to authenticate to Girder client with default API URL/key!"
+        ) from exc
+    return client
+
+@pytest.fixture
+def default_collection_name():
+    return IMQCAMArgumentParser.ARGUMENTS["collection_name"][1]["default"]
+
+@pytest.fixture
+def ci_testing_girder_folder_name():
+    return "uploaders_ci_testing"
+
+@pytest.fixture
+def ci_testing_girder_folder_id():
+    return "65dfc5f002ad536bd833df10"
