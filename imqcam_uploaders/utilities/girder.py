@@ -3,6 +3,7 @@
 # imports
 import pathlib
 
+
 def get_girder_folder_id(
     client,
     folder_rel_path,

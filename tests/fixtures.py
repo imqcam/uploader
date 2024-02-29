@@ -1,8 +1,8 @@
 " Fixtures used in more than one test "
 
 # imports
-import pytest
 import json
+import pytest
 from faker import Faker
 import girder_client
 from imqcam_uploaders.utilities.argument_parsing import IMQCAMArgumentParser
@@ -20,6 +20,7 @@ def random_json_string():
         "company": fake.company(),
     }
     return json.dumps(data)
+
 
 @pytest.fixture
 def default_girder_client():
@@ -40,13 +41,16 @@ def default_girder_client():
         ) from exc
     return client
 
+
 @pytest.fixture
 def default_collection_name():
     return IMQCAMArgumentParser.ARGUMENTS["collection_name"][1]["default"]
 
+
 @pytest.fixture
 def ci_testing_girder_folder_name():
     return "uploaders_ci_testing"
+
 
 @pytest.fixture
 def ci_testing_girder_folder_id():

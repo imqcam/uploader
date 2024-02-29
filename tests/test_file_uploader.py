@@ -9,8 +9,6 @@ import json
 import requests
 import shutil
 import pytest
-import girder_client
-from imqcam_uploaders.utilities.argument_parsing import IMQCAMArgumentParser
 from imqcam_uploaders.utilities.girder import (
     get_girder_folder_id,
     get_girder_item_and_file_id,
@@ -30,6 +28,7 @@ from .fixtures import (
 @pytest.fixture
 def random_100_kb():
     return os.urandom(100000)
+
 
 def test_file_uploader(
     default_girder_client,
@@ -125,7 +124,9 @@ def test_file_uploader_root_folder_id(
     girder_filepath = test_filepath.relative_to(test_dir.parent)
     with pytest.raises(ValueError):
         _, _ = get_girder_item_and_file_id(
-            client, girder_filepath, root_folder_id=ci_testing_girder_folder_id,
+            client,
+            girder_filepath,
+            root_folder_id=ci_testing_girder_folder_id,
         )
     # create the test directory and file
     assert not test_dir.is_dir()
@@ -180,6 +181,7 @@ def test_file_uploader_root_folder_id(
             _ = client.delete(f"folder/{girder_test_folder_id}")
         # delete the local testing folder
         shutil.rmtree(test_dir)
+
 
 def test_file_uploader_bad_relative_to(
     default_girder_client,

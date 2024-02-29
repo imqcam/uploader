@@ -86,7 +86,9 @@ def test_get_girder_folder_id_missing_collection(
 
 
 def test_get_girder_folder_id_create_new(
-    default_girder_client, ci_testing_girder_folder_id, static_folder_name,
+    default_girder_client,
+    ci_testing_girder_folder_id,
+    static_folder_name,
 ):
     remove_folder_path = pathlib.Path(static_folder_name) / "subdir_testing_1"
     # make sure it doesn't already exist
@@ -119,7 +121,9 @@ def test_get_girder_folder_id_create_new(
 
 
 def test_get_girder_item_id(
-    default_girder_client, ci_testing_girder_folder_id, static_folder_name,
+    default_girder_client,
+    ci_testing_girder_folder_id,
+    static_folder_name,
 ):
     item_id = get_girder_item_id(
         default_girder_client,
@@ -130,7 +134,9 @@ def test_get_girder_item_id(
 
 
 def test_get_girder_item_id_missing_item(
-    default_girder_client, ci_testing_girder_folder_id, static_folder_name,
+    default_girder_client,
+    ci_testing_girder_folder_id,
+    static_folder_name,
 ):
     with pytest.raises(ValueError):
         _ = get_girder_item_id(
@@ -141,7 +147,9 @@ def test_get_girder_item_id_missing_item(
 
 
 def test_get_girder_item_and_file_id(
-    default_girder_client, ci_testing_girder_folder_id, static_folder_name,
+    default_girder_client,
+    ci_testing_girder_folder_id,
+    static_folder_name,
 ):
     item_id, file_id = get_girder_item_and_file_id(
         default_girder_client,
