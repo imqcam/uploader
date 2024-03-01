@@ -20,22 +20,5 @@ jobs:
       env:
         IMQCAM_API_KEY: ${{ secrets.IMQCAM_API_KEY }}
       run: poetry run pytest
-    - name: Generate coverage badge
-      env:
-        GITHUB_TOKEN: ${{ secrets.CICD_PAT }}
-      run: |
-        poetry run coverage-badge -o coverage_badge.svg
-        git config --global user.email "margaret.eminizer@gmail.com"
-        git config --global user.name "Maggie Eminizer"
-        echo "Running fetch"
-        git fetch origin gh-pages
-        echo "Running checkout"
-        git checkout gh-pages
-        echo "Running reset"
-        git reset --hard origin/gh-pages
-        echo "Running add"
-        git add coverage_badge.svg
-        echo "Committing"
-        git commit -m "Update coverage badge"
-        echo "Pushing"
-        git push origin gh-pages --force
+    - name: Update Coverage Badge
+      uses: we-cli/coverage-badge-action@main
