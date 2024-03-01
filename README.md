@@ -1,6 +1,8 @@
 # IMQCAM uploader
 Code for the IMQCAM Girder instance (data.imqcam.org) file/data uploader
 
+[![CI tests](https://github.com/imqcam/uploader/actions/workflows/ci_tests.yaml/badge.svg)](https://github.com/imqcam/uploader/actions/workflows/ci_tests.yaml)
+
 ## Installation
 
 This package is managed using [poetry](https://python-poetry.org/), which you should install globally on your system. When you have that tool installed, though, you can then install this package and its dependencies in any environment of your choice.
@@ -44,7 +46,6 @@ Where:
 - `[metadata_json]` is a JSON-formatted string, or the path to a valid JSON file on disk, specifying the JSON metadata that should be associated with the uploaded file in Girder. The version of the uploader code that's running and a checksum hash will be added as metadata in addition to any parameters specified here.
 
 To see the full list of options for running the program, add the `-h` flag to the command.
-
 
 ## Running tests
 
