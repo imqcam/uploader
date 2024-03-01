@@ -61,3 +61,13 @@ def ci_testing_girder_folder_name():
 @pytest.fixture
 def ci_testing_girder_folder_id():
     return "65dfc5f002ad536bd833df10"
+
+
+@pytest.fixture
+def static_file_name():
+    return "do_not_delete_file.txt"
+
+
+@pytest.fixture
+def static_file_id():
+    return "65e0ca7e02ad536bd833df3d"

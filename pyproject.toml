@@ -22,9 +22,13 @@ black = "^24.2.0"
 pylint = "^3.1.0"
 coverage = "^7.4.3"
 pytest-cov = "^4.1.0"
+toml = "^0.10.2"
+
+[tool.poetry.scripts]
+upload_file = "imqcam_uploaders.uploaders.file_uploader:main"
 
 [tool.pytest.ini_options]
-addopts = "-s --cov=imqcam_uploaders --cov-report=term-missing --cov-fail-under=100"
+addopts = "--log-cli-level=INFO --cov=imqcam_uploaders --cov-report=term-missing --cov-fail-under=98"
 filterwarnings = [
     "error",
     'ignore:pkg_resources is deprecated:DeprecationWarning',

@@ -17,6 +17,8 @@ from .fixtures import (
     default_collection_name,
     ci_testing_girder_folder_name,
     ci_testing_girder_folder_id,
+    static_file_name,
+    static_file_id,
 )
 
 
@@ -150,11 +152,13 @@ def test_get_girder_item_and_file_id(
     default_girder_client,
     ci_testing_girder_folder_id,
     static_folder_name,
+    static_file_name,
+    static_file_id,
 ):
     item_id, file_id = get_girder_item_and_file_id(
         default_girder_client,
-        pathlib.Path(static_folder_name) / "do_not_delete_file.txt",
+        pathlib.Path(static_folder_name) / static_file_name,
         root_folder_id=ci_testing_girder_folder_id,
     )
     assert item_id == "65e0ca7e02ad536bd833df3c"
-    assert file_id == "65e0ca7e02ad536bd833df3d"
+    assert file_id == static_file_id

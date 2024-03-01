@@ -10,7 +10,10 @@ import requests
 import shutil
 import importlib.metadata
 import pytest
-from imqcam_uploaders.utilities.hashing import get_file_hash
+from imqcam_uploaders.utilities.hashing import (
+    get_on_disk_file_hash,
+    get_girder_file_hash,
+)
 from imqcam_uploaders.utilities.girder import (
     get_girder_folder_id,
     get_girder_item_and_file_id,
@@ -84,15 +87,11 @@ def test_file_uploader(
         metadata_read_back = client.getItem(item_id)["meta"]
         ref_metadata = json.loads(random_json_string)
         ref_metadata["uploaderVersion"] = importlib.metadata.version("imqcam_uploaders")
-        ref_metadata["checksum"] = {"sha256": get_file_hash(test_filepath)}
+        file_hash = get_on_disk_file_hash(test_filepath)
+        ref_metadata["checksum"] = {"sha256": file_hash}
         assert ref_metadata == metadata_read_back
-        filepath_read_back = test_dir / "test_file_read_back.bin"
-        client.downloadFile(file_id, str(filepath_read_back))
-        with open(test_filepath, "rb") as ref_fp:
-            ref_bytestring = ref_fp.read()
-        with open(filepath_read_back, "rb") as test_fp:
-            test_bytestring = test_fp.read()
-        assert test_bytestring == ref_bytestring
+        hash_read_back = get_girder_file_hash(client, file_id)
+        assert hash_read_back == file_hash
     finally:
         # delete the testing folder in Girder
         girder_test_folder_id = None
@@ -165,15 +164,11 @@ def test_file_uploader_root_folder_id(
         metadata_read_back = client.getItem(item_id)["meta"]
         ref_metadata = {}
         ref_metadata["uploaderVersion"] = importlib.metadata.version("imqcam_uploaders")
-        ref_metadata["checksum"] = {"sha256": get_file_hash(test_filepath)}
+        file_hash = get_on_disk_file_hash(test_filepath)
+        ref_metadata["checksum"] = {"sha256": file_hash}
         assert ref_metadata == metadata_read_back
-        filepath_read_back = test_dir / "test_file_read_back.bin"
-        client.downloadFile(file_id, str(filepath_read_back))
-        with open(test_filepath, "rb") as ref_fp:
-            ref_bytestring = ref_fp.read()
-        with open(filepath_read_back, "rb") as test_fp:
-            test_bytestring = test_fp.read()
-        assert test_bytestring == ref_bytestring
+        hash_read_back = get_girder_file_hash(client, file_id)
+        assert hash_read_back == file_hash
     finally:
         # delete the testing folder in Girder
         girder_test_folder_id = None

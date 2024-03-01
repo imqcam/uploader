@@ -7,7 +7,7 @@ from tqdm import tqdm
 import girder_client
 from openmsitoolbox import Runnable, LogOwner
 from ..utilities.argument_parsing import IMQCAMArgumentParser
-from ..utilities.hashing import get_file_hash
+from ..utilities.hashing import get_on_disk_file_hash, get_girder_file_hash
 from ..utilities.girder import get_girder_folder_id, get_girder_item_id
 
 
@@ -123,13 +123,13 @@ class IMQCAMFileUploader(Runnable, LogOwner):
             create_if_not_found=True,
         )
         # Upload the file
-        file_hash = get_file_hash(filepath)
+        file_hash = get_on_disk_file_hash(filepath)
         self.logger.info(f"Uploading {filepath} to {self.api_url}")
         total_bytes = os.stat(filepath).st_size
         progress_bar = tqdm(
-            desc=filepath.name,
+            desc=f"uploading {filepath.name}",
             total=total_bytes,
-            ncols=100,
+            ncols=120,
             unit="byte",
             unit_scale=True,
             ascii=True,
@@ -145,6 +145,32 @@ class IMQCAMFileUploader(Runnable, LogOwner):
         metadata["uploaderVersion"] = self._uploader_version
         metadata["checksum"] = {"sha256": file_hash}
         self._girder_client.addMetadataToItem(new_file["itemId"], metadata)
+        progress_bar.close()
+        self.logger.info("Validating upload")
+        progress_bar = tqdm(
+            desc=f"validating {filepath.name}",
+            total=total_bytes,
+            ncols=120,
+            unit="byte",
+            unit_scale=True,
+            ascii=True,
+        )
+        if (
+            get_girder_file_hash(
+                self._girder_client, new_file["_id"], pbar=progress_bar
+            )
+            != file_hash
+        ):
+            self.logger.error(
+                f"Hash for {filepath} does not match what's on Girder after upload!",
+                exc_type=ValueError,
+            )
+        if self._girder_client.getItem(new_file["itemId"])["meta"] != metadata:
+            self.logger.error(
+                f"Metadata for {filepath} does not match what's on Girder after upload!",
+                exc_type=ValueError,
+            )
+        progress_bar.update(new_file["size"] - progress_bar.n)
         progress_bar.close()
         self.logger.info("Done!")
 
