@@ -13,7 +13,12 @@ def json_str_or_filepath(argstring):
     deserialized to a dictonary
     """
     arg_as_path = pathlib.Path(argstring)
-    if arg_as_path.is_file():
+    is_file = False
+    try:
+        is_file = arg_as_path.is_file()
+    except OSError:
+        pass
+    if is_file:
         with open(arg_as_path, "r") as argfile:  # pylint: disable=unspecified-encoding
             try:
                 return json.load(argfile)
