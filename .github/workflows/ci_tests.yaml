@@ -25,8 +25,15 @@ jobs:
         poetry run coverage-badge -o coverage_badge.svg
         git config --global user.email "margaret.eminizer@gmail.com"
         git config --global user.name "Maggie Eminizer"
-        git pull --ff-only origin gh-pages
+        echo "Pulling"
+        git pull origin gh-pages
+        echo "Running checkout"
         git checkout gh-pages
+        echo "Running merge"
+        git merge --no-ff origin/gh-pages
+        echo "Running add"
         git add coverage_badge.svg
+        echo "Committing"
         git commit -m "Update coverage badge"
+        echo "Pushing"
         git push origin gh-pages
