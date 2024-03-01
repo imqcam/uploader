@@ -38,6 +38,18 @@ def test_json_str_or_filepath_fail_with_str(random_not_json_string):
         _ = json_str_or_filepath(random_not_json_string)
 
 
+def test_json_str_or_filepath_too_long_with_str():
+    too_long_str = (
+        '{"name": "Brandon Craig", '
+        '"address": "87403 Martin Overpass\\nMichaelafurt, FL 20199", '
+        '"phone_number": "(818)466-8967x28899", "email": "thompsonbrian@example.net", '
+        '"job": "Chartered legal executive (England and Wales)", '
+        '"company": "Johnson, Foster and Pham"}'
+    )
+    retval = json_str_or_filepath(too_long_str)
+    assert json.loads(too_long_str) == retval
+
+
 def test_json_str_or_filepath_with_filepath(random_json_string):
     test_file_path = (
         pathlib.Path(__file__).parent
