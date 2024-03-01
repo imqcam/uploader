@@ -21,6 +21,8 @@ jobs:
         IMQCAM_API_KEY: ${{ secrets.IMQCAM_API_KEY }}
       run: poetry run pytest
     - name: Generate coverage badge
+      env:
+        GH_TOKEN: ${{ secrets.CICD_PAT }}
       run: |
         poetry run coverage-badge -o coverage_badge.svg
         git config --global user.email "margaret.eminizer@gmail.com"
