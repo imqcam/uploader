@@ -19,6 +19,6 @@ jobs:
     - name: Run tests
       env:
         IMQCAM_API_KEY: ${{ secrets.IMQCAM_API_KEY }}
-      run: poetry run pytest
+      run: poetry run pytest --cov-report=json:coverage.json
     - name: Update Coverage Badge
       uses: we-cli/coverage-badge-action@main
