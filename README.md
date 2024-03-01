@@ -29,6 +29,23 @@ Navigate to this repository's directory, and install the `imqcam_uploader` packa
     cd uploader
     poetry install
 
+## Running programs
+
+To upload a single file, run:
+
+    upload_file [filepath] --relative_to [relative_to] --collection_name [collection_name] --root_folder_path [root_folder_path] --metadata_json [metadata_json]
+
+Where:
+
+- `[filepath]` is the path to the file to upload
+- `[relative_to]` is the path to the directory that the file should be uploaded "relative to," as in, any directories beyond `[relative_to]` on the way to `[filepath]` will be replicated in Girder (they'll be created as public Folders if they don't already exist)
+- `[collection_name]` is the name of the Girder Collection to which the file should be uploaded
+- `[root_folder_path]` name of the Girder Folder inside `[collection_name]` that the file should be uploaded to. If `[relative_to]` was given, directories past that one will be created as public Girder Folders inside this Girder "root folder". You can give a path to specify any sub-Folder inside the Collection.
+- `[metadata_json]` is a JSON-formatted string, or the path to a valid JSON file on disk, specifying the JSON metadata that should be associated with the uploaded file in Girder. The version of the uploader code that's running and a checksum hash will be added as metadata in addition to any parameters specified here.
+
+To see the full list of options for running the program, add the `-h` flag to the command.
+
+
 ## Running tests
 
 You can pick up the optional dependencies needed for running CI tests with:
