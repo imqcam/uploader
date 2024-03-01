@@ -21,7 +21,8 @@ jobs:
         IMQCAM_API_KEY: ${{ secrets.IMQCAM_API_KEY }}
       run: poetry run pytest
     - name: Generate coverage badge
-      run: coverage-badge -o coverage.svg
+      run: |
+        coverage-badge -o coverage.svg
     - name: Upload coverage badge
       uses: actions/upload-artifact@v4
       with:
