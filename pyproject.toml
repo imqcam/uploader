@@ -33,6 +33,7 @@ ipympl = "^0.9.3"
 
 [tool.poetry.scripts]
 upload_file = "imqcam_uploaders.uploaders.file_uploader:main"
+upload_file_gui = "imqcam_uploaders.guis.file_uploader_gui:main"
 
 [tool.pytest.ini_options]
 addopts = "--log-cli-level=INFO --cov=imqcam_uploaders --cov-report=term-missing --cov-fail-under=98"
