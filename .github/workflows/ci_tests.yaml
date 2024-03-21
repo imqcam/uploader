@@ -16,8 +16,12 @@ jobs:
       run: |
         pip install poetry
         poetry install --with test
+        sudo apt-get update
+        sudo apt-get install -y xvfb python3-tk
+    - name: Start Xvfb
+      run: Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
     - name: Run tests
       env:
         IMQCAM_API_KEY: ${{ secrets.IMQCAM_API_KEY }}
-        DISPLAY: ""
+        DISPLAY: ":99"
       run: poetry run pytest
