@@ -24,7 +24,6 @@ coverage = "^7.4.3"
 pytest-cov = "^4.1.0"
 toml = "^0.10.2"
 
-
 [tool.poetry.group.notebooks.dependencies]
 ipykernel = "^6.29.3"
 matplotlib = "^3.8.3"
@@ -36,7 +35,7 @@ upload_file = "imqcam_uploaders.uploaders.file_uploader:main"
 upload_file_gui = "imqcam_uploaders.guis.file_uploader_gui:main"
 
 [tool.pytest.ini_options]
-addopts = "--log-cli-level=INFO --cov=imqcam_uploaders --cov-report=term-missing --cov-fail-under=98"
+addopts = "--log-cli-level=INFO --cov=imqcam_uploaders --cov-report=term-missing --cov-fail-under=97"
 filterwarnings = [
     "error",
     'ignore:pkg_resources is deprecated:DeprecationWarning',

@@ -1,7 +1,7 @@
 " Fixtures used in more than one test "
 
 # imports
-import pathlib
+import pathlib, os
 import json
 import pytest
 from faker import Faker
@@ -12,6 +12,11 @@ from imqcam_uploaders.utilities.argument_parsing import IMQCAMArgumentParser
 @pytest.fixture
 def local_tests_dir():
     return pathlib.Path(__file__).parent
+
+
+@pytest.fixture
+def random_100_kb():
+    return os.urandom(100000)
 
 
 @pytest.fixture

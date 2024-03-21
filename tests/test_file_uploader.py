@@ -3,7 +3,6 @@
 # pylint: disable=redefined-outer-name
 
 # imports
-import os
 import pathlib
 import json
 import requests
@@ -27,13 +26,9 @@ from .fixtures import (
     default_collection_name,
     ci_testing_girder_folder_name,
     ci_testing_girder_folder_id,
+    random_100_kb,
     random_json_string,
 )
-
-
-@pytest.fixture
-def random_100_kb():
-    return os.urandom(100000)
 
 
 def test_file_uploader(
