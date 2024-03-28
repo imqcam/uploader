@@ -1,0 +1,102 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Feed Powder Metadata",
+    "description": "Metadata associated with a batch of powder used as raw material for metals added manufacturing",
+    "type": "object",
+    "properties": {
+        "powderSupplyCompany": {
+            "type": "string",
+            "oneOf": [
+                {
+                    "title": "Company A",
+                    "const": "company A"
+                },
+                {
+                    "title": "example company B",
+                    "const": "company B"
+                }
+            ]
+        },
+        "powderComposition": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/compositionElement"
+            },
+            "minItems":1
+        },
+        "powderCharacteristics": {
+            "type": "object",
+            "properties": {
+                "powderSize": {
+                    "title": "Powder Size (microns)",
+                    "type": "number",
+                    "minimum": 10,
+                    "maximum": 50
+                },
+                "virginPercent": {
+                    "title": "Virgin Powder %",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            },
+            "required": [
+                "powderSize",
+                "virginPercent"
+            ]
+        },
+        "powderBatchInformation": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "powderSupplyCompany",
+        "powderComposition",
+        "powderCharacteristics"
+    ],
+    "definitions": {
+        "compositionElement": {
+            "title": "Powder Composition Element",
+            "description": "A single element relevant to a raw powder composition",
+            "type": "object",
+            "properties": {
+                "element": {
+                    "type": "string",
+                    "enum": [
+                        "Ti",
+                        "Al",
+                        "V",
+                        "Ni",
+                        "Cr",
+                        "Fe",
+                        "Mo",
+                        "Nb",
+                        "Ta",
+                        "Co",
+                        "Mn",
+                        "Cu",
+                        "Si",
+                        "C",
+                        "S",
+                        "P",
+                        "B",
+                        "O",
+                        "N",
+                        "H",
+                        "Y"
+                    ]
+                },
+                "weightPercent": {
+                    "title": "Weight %",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            },
+            "required": [
+                "element",
+                "weightPercent"
+            ]
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "type": "VerticalLayout",
+    "elements": [
+        {
+            "type": "Control",
+            "scope": "#/properties/powderSupplyCompany",
+            "options": {
+                "autocomplete": true
+            }
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/powderComposition"
+        },
+        {
+            "type": "HorizontalLayout",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/powderCharacteristics/properties/powderSize"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/powderCharacteristics/properties/virginPercent"
+                }
+            ]
+        },
+        {
+            "type": "Control",
+            "scope": "#/properties/powderBatchInformation",
+            "options": {
+                "multi": true
+            }
+        }
+    ]
+}

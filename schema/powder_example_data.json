@@ -1,0 +1,22 @@
+{
+    "powderSupplyCompany": "company B",
+    "powderComposition": [
+      {
+        "element": "Ti",
+        "weightPercent": 90
+      },
+      {
+        "element": "Al",
+        "weightPercent": 6
+      },
+      {
+        "element": "V",
+        "weightPercent": 4
+      }
+    ],
+    "powderCharacteristics": {
+      "powderSize": 15,
+      "virginPercent": 100
+    },
+    "powderBatchInformation": "Testing adding\nmultiline powder batch\ninformation"
+  }
