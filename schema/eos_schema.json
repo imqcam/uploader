@@ -1,0 +1,285 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "EOS Build Metadata",
+    "description": "Metadata for a single build run using an EOS metals additive manufacturing printer",
+    "type": "object",
+    "properties": {
+        "rawMaterials": {
+            "type": "object",
+            "properties": {
+                "powderComposition": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/compositionElement"
+                    }
+                },
+                "powderSupplyCompany": {
+                    "type": "string",
+                    "enum": [
+                        "example company 1",
+                        "example company 2"
+                    ]
+                },
+                "powderBatchInformation": {
+                    "type": "string"
+                },
+                "powderCharacteristics": {
+                    "type": "object",
+                    "properties": {
+                        "powderSize": {
+                            "title": "Powder Size (microns)",
+                            "type": "number",
+                            "minimum": 10,
+                            "maximum": 50
+                        },
+                        "virginPercent": {
+                            "title": "Virgin Powder %",
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                        }
+                    },
+                    "required": [
+                        "powderSize",
+                        "virginPercent"
+                    ]
+                }
+            },
+            "required": [
+                "powderComposition",
+                "powderSupplyCompany",
+                "powderBatchInformation",
+                "powderCharacteristics"
+            ]
+        },
+        "buildProcess": {
+            "type": "object",
+            "properties": {
+                "buildMachine": {
+                    "type": "string",
+                    "enum": [
+                        "EOS M290 'short name' at CMU"
+                    ]
+                },
+                "buildSoftware": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/software"
+                    }
+                },
+                "buildPlate": {
+                    "type": "object",
+                    "properties": {
+                        "buildPlateMaterial": {
+                            "type": "string",
+                            "enum": [
+                                "Ti64"
+                            ]
+                        },
+                        "buildPlateTemperature": {
+                            "title": "Build Plate Temperature (deg C)",
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 450
+                        }
+                    }
+                },
+                "flowGas": {
+                    "type": "object",
+                    "properties": {
+                        "flowGasType": {
+                            "type": "string",
+                            "enum": [
+                                "Ar",
+                                "N2"
+                            ]
+                        },
+                        "flowGasFlowRate": {
+                            "title": "Gas Flow Rate (lpm)",
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 10
+                        }
+                    }
+                },
+                "recoater": {
+                    "type": "object",
+                    "properties": {
+                        "recoaterMaterial": {
+                            "title": "Material",
+                            "type": "string",
+                            "enum": [
+                                "metal",
+                                "rubber"
+                            ]
+                        },
+                        "recoaterStyle": {
+                            "title": "Style",
+                            "type": "string",
+                            "enum": [
+                                "rake",
+                                "roller",
+                                "blade"
+                            ]
+                        }
+                    }
+                },
+                "buildParameters": {
+                    "type": "object",
+                    "properties": {
+                        "contouringParameters": {
+                            "$ref": "#/definitions/buildParameterSet"
+                        },
+                        "infillParameters": {
+                            "$ref": "#/definitions/buildParameterSet"
+                        },
+                        "upskinParameters": {
+                            "$ref": "#/definitions/buildParameterSet"
+                        },
+                        "downskinParameters": {
+                            "$ref": "#/definitions/buildParameterSet"
+                        }
+                    }
+                },
+                "userParameters": {
+                    "type": "object",
+                    "properties": {
+                        "runDate": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "runTime": {
+                            "type": "string",
+                            "format": "time"
+                        },
+                        "teamMembers": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/teamMember"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "rawMaterials",
+        "buildProcess"
+    ],
+    "definitions": {
+        "compositionElement": {
+            "title": "Powder Composition Element",
+            "description": "A single element relevant to a raw powder composition",
+            "type": "object",
+            "properties": {
+                "element": {
+                    "type": "string",
+                    "enum": [
+                        "Ti",
+                        "Al",
+                        "V",
+                        "Ni",
+                        "Cr",
+                        "Fe",
+                        "Mo",
+                        "Nb",
+                        "Ta",
+                        "Co",
+                        "Mn",
+                        "Cu",
+                        "Si",
+                        "C",
+                        "S",
+                        "P",
+                        "B",
+                        "O",
+                        "N",
+                        "H",
+                        "Y"
+                    ]
+                },
+                "weightPercent": {
+                    "title": "Weight %",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            },
+            "required": [
+                "element",
+                "weightPercent"
+            ]
+        },
+        "software": {
+            "title": "Software",
+            "description": "A software used in the build process",
+            "type": "object",
+            "properties": {
+                "softwareName": {
+                    "type": "string"
+                },
+                "softwareVersion": {
+                    "type": "string",
+                    "pattern": "^v.*"
+                }
+            }
+        },
+        "buildParameterSet": {
+            "title": "Build parameter set",
+            "description": "A full set of build-specific parameters",
+            "type": "object",
+            "properties": {
+                "laserPower": {
+                    "title": "Laser Power (W)",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 370
+                },
+                "laserVelocity": {
+                    "title": "Laser Velocity (m/s)",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 7
+                },
+                "hatchSpacing": {
+                    "title": "Hatch Spacing (microns)",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 300
+                },
+                "layerThickness": {
+                    "title": "Layer Thickness (microns)",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            }
+        },
+        "teamMember": {
+            "title": "Team Member",
+            "description": "An individual involved with a build",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "enum": [
+                        "Evan Adcock",
+                        "Katie O'Donnell"
+                    ]
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "designer",
+                            "uploader",
+                            "supervisor"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
