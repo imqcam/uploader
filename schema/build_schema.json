@@ -1,0 +1,182 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Build Metadata",
+    "description": "Metadata for a single build using a metals additive manufacturing printer",
+    "type": "object",
+    "properties": {
+        "buildMachine": {
+            "type": "string",
+            "oneOf": [
+                {
+                    "title": "EOS M290 'short name' at CMU",
+                    "const": "CMU_EOS_M290_short_name"
+                },
+                {
+                    "title": "EOS M300 'short name' at NASA",
+                    "const": "NASA_EOS_M300_short_name"
+                }
+            ]
+        },
+        "buildSoftware": {
+            "title": "Design & Build Software",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/software"
+            }
+        },
+        "buildPlate": {
+            "type": "object",
+            "properties": {
+                "buildPlateMaterial": {
+                    "title": "Material",
+                    "type": "string",
+                    "enum": [
+                        "Ti64"
+                    ]
+                },
+                "buildPlateTemperature": {
+                    "title": "Temperature (deg C)",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 450
+                }
+            }
+        },
+        "flowGas": {
+            "type": "object",
+            "properties": {
+                "flowGasType": {
+                    "title": "Type",
+                    "type": "string",
+                    "enum": [
+                        "Ar",
+                        "N2"
+                    ]
+                },
+                "flowGasFlowRate": {
+                    "title": "Flow Rate (lpm)",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10
+                }
+            }
+        },
+        "recoater": {
+            "type": "object",
+            "properties": {
+                "recoaterMaterial": {
+                    "title": "Material",
+                    "type": "string",
+                    "enum": [
+                        "metal",
+                        "rubber"
+                    ]
+                },
+                "recoaterStyle": {
+                    "title": "Style",
+                    "type": "string",
+                    "enum": [
+                        "rake",
+                        "roller",
+                        "blade"
+                    ]
+                }
+            }
+        },
+        "buildParameters": {
+            "type": "object",
+            "properties": {
+                "contouringParameters": {
+                    "$ref": "#/definitions/buildParameterSet"
+                },
+                "infillParameters": {
+                    "$ref": "#/definitions/buildParameterSet"
+                },
+                "upskinParameters": {
+                    "$ref": "#/definitions/buildParameterSet"
+                },
+                "downskinParameters": {
+                    "$ref": "#/definitions/buildParameterSet"
+                }
+            }
+        },
+        "userParameters": {
+            "type": "object",
+            "properties": {
+                "runDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "runTime": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "teamMembers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "Evan Adcock",
+                            "Katie O'Donnell"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "required": [],
+    "definitions": {
+        "software": {
+            "title": "Software",
+            "description": "A software used in the build process",
+            "type": "object",
+            "properties": {
+                "softwareName": {
+                    "type": "string"
+                },
+                "softwareVersion": {
+                    "type": "string",
+                    "pattern": "^v.*"
+                },
+                "softwareType": {
+                    "type": "string",
+                    "enum": [
+                        "design",
+                        "build"
+                    ]
+                }
+            }
+        },
+        "buildParameterSet": {
+            "title": "Build parameter set",
+            "description": "A full set of build-specific parameters",
+            "type": "object",
+            "properties": {
+                "laserPower": {
+                    "title": "Laser Power (W)",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 370
+                },
+                "laserVelocity": {
+                    "title": "Laser Velocity (m/s)",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 7
+                },
+                "hatchSpacing": {
+                    "title": "Hatch Spacing (microns)",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 300
+                },
+                "layerThickness": {
+                    "title": "Layer Thickness (microns)",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            }
+        }
+    }
+}

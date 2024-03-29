@@ -1,0 +1,55 @@
+{
+    "buildMachine": "CMU_EOS_M290_short_name",
+    "userParameters": {
+        "runDate": "2024-03-29",
+        "runTime": "15:48:49",
+        "teamMembers": [
+            "Katie O'Donnell"
+        ]
+    },
+    "buildSoftware": [
+        {
+            "softwareName": "EOSPrint",
+            "softwareVersion": "v2.0.1",
+            "softwareType": "build"
+        }
+    ],
+    "buildPlate": {
+        "buildPlateMaterial": "Ti64",
+        "buildPlateTemperature": 150
+    },
+    "flowGas": {
+        "flowGasType": "Ar",
+        "flowGasFlowRate": 3
+    },
+    "recoater": {
+        "recoaterMaterial": "rubber",
+        "recoaterStyle": "roller"
+    },
+    "buildParameters": {
+        "contouringParameters": {
+            "laserPower": 120,
+            "laserVelocity": 1.2,
+            "hatchSpacing": 100,
+            "layerThickness": 30
+        },
+        "infillParameters": {
+            "laserPower": 150,
+            "laserVelocity": 3,
+            "hatchSpacing": 110,
+            "layerThickness": 50
+        },
+        "upskinParameters": {
+            "laserPower": 100,
+            "laserVelocity": 1.5,
+            "hatchSpacing": 200,
+            "layerThickness": 100
+        },
+        "downskinParameters": {
+            "laserPower": 250,
+            "laserVelocity": 4,
+            "hatchSpacing": 300,
+            "layerThickness": 90
+        }
+    }
+}
