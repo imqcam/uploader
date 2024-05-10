@@ -30,7 +30,11 @@
         },
         "batchInformation": {
             "title": "Additional batch information",
-            "type": "string",
+            "description": "String-only keys/values for misc. metadata (not validated)",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/keyValue"
+            },
             "propertyOrder": 3
         },
         "composition": {
@@ -93,6 +97,27 @@
         "characteristics"
     ],
     "definitions": {
+        "keyValue": {
+            "title": "Misc. metadata",
+            "type": "object",
+            "format": "grid",
+            "properties": {
+                "key": {
+                    "title": "Key",
+                    "type": "string",
+                    "propertyOrder": 0
+                },
+                "value": {
+                    "title": "Value",
+                    "type": "string",
+                    "propertyOrder": 1
+                }
+            },
+            "required": [
+                "key",
+                "value"
+            ]
+        },
         "compositionElement": {
             "title": "Element",
             "type": "object",
