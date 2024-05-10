@@ -22,7 +22,6 @@
         },
         "composition": {
             "title": "Powder Composition",
-            "description": "Elements present in the powder with weight percents",
             "type": "array",
             "items": {
                 "$ref": "#/definitions/compositionElement"
@@ -39,7 +38,7 @@
             "propertyOrder": 3
         },
         "batchInformation": {
-            "Title": "Additional batch information",
+            "title": "Additional batch information",
             "type": "string",
             "propertyOrder": 4
         },
@@ -54,11 +53,11 @@
         "characteristics": {
             "title": "Powder Characteristics",
             "type": "object",
+            "format": "grid",
             "properties": {
                 "size": {
                     "title": "Powder Size (microns)",
                     "type": "number",
-                    "format": "grid",
                     "minimum": 10,
                     "maximum": 50,
                     "propertyOrder": 0
@@ -66,7 +65,6 @@
                 "virginPercent": {
                     "title": "Virgin Powder %",
                     "type": "number",
-                    "format": "grid",
                     "minimum": 0,
                     "maximum": 100,
                     "propertyOrder": 1
@@ -90,6 +88,7 @@
         "compositionElement": {
             "title": "Element",
             "type": "object",
+            "format": "grid",
             "properties": {
                 "element": {
                     "type": "string",
@@ -115,13 +114,15 @@
                         "N",
                         "H",
                         "Y"
-                    ]
+                    ],
+                    "propertyOrder": 0
                 },
                 "weightPercent": {
                     "title": "Weight %",
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 100
+                    "maximum": 100,
+                    "propertyOrder": 1
                 }
             },
             "required": [
