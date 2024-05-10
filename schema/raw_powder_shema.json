@@ -1,33 +1,37 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Feed Powder Metadata",
+    "title": "Raw Feed Powder Metadata",
     "description": "Metadata associated with a batch of powder used as raw material for metals added manufacturing",
     "type": "object",
     "properties": {
-        "powderSupplyCompany": {
+        "rawPowderID": {
             "type": "string",
-            "oneOf": [
-                {
-                    "title": "Company A",
-                    "const": "company A"
-                },
-                {
-                    "title": "example company B",
-                    "const": "company B"
-                }
+            "format": "custom",
+            "pattern": "^[a-zA-Z0-9_]+$"
+        },
+        "alloy": {
+            "type": "string",
+            "enum": [
+                "Ti-6Al-4V"
             ]
         },
-        "powderComposition": {
+        "composition": {
             "type": "array",
             "items": {
                 "$ref": "#/definitions/compositionElement"
             },
-            "minItems":1
+            "minItems": 1
         },
-        "powderCharacteristics": {
+        "supplyCompany": {
+            "type": "string",
+            "enum": [
+                "ATI"
+            ]
+        },
+        "characteristics": {
             "type": "object",
             "properties": {
-                "powderSize": {
+                "size": {
                     "title": "Powder Size (microns)",
                     "type": "number",
                     "minimum": 10,
@@ -45,14 +49,16 @@
                 "virginPercent"
             ]
         },
-        "powderBatchInformation": {
+        "batchInformation": {
             "type": "string"
         }
     },
     "required": [
-        "powderSupplyCompany",
-        "powderComposition",
-        "powderCharacteristics"
+        "rawPowderID",
+        "alloy",
+        "composition",
+        "supplyCompany",
+        "characteristics"
     ],
     "definitions": {
         "compositionElement": {
@@ -97,6 +103,36 @@
                 "element",
                 "weightPercent"
             ]
+        },
+        "fileUpload": {
+            "title": "file",
+            "type": "object",
+            "format": "grid",
+            "properties": {
+                "file": {
+                    "title": "Upload file",
+                    "type": "string",
+                    "propertyOrder": 0
+                },
+                "fileType": {
+                    "type": "string",
+                    "enum": [
+                        "Manufacturer report"
+                    ],
+                    "propertyOrder": 1
+                },
+                "button": {
+                    "title": "Browse",
+                    "format": "button",
+                    "options": {
+                        "button": {
+                            "action": "button1CB",
+                            "uploadFor": "file"
+                        }
+                    },
+                    "propertyOrder": 2
+                }
+            }
         }
     }
 }
