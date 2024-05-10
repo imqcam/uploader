@@ -5,9 +5,12 @@
     "type": "object",
     "properties": {
         "rawPowderID": {
+            "title": "Raw Powder ID",
+            "description": "Must be unique among all raw powders",
             "type": "string",
             "format": "custom",
-            "pattern": "^[a-zA-Z0-9_]+$"
+            "pattern": "^[a-zA-Z0-9_]+$",
+            "propertyOrder": 0
         },
         "alloy": {
             "title": "Powder Alloy",
@@ -15,7 +18,7 @@
             "enum": [
                 "Ti-6Al-4V"
             ],
-            "propertyOrder": 0
+            "propertyOrder": 1
         },
         "composition": {
             "title": "Powder Composition",
@@ -25,7 +28,7 @@
                 "$ref": "#/definitions/compositionElement"
             },
             "minItems": 1,
-            "propertyOrder": 1
+            "propertyOrder": 2
         },
         "supplyCompany": {
             "title": "Supply Company",
@@ -33,11 +36,20 @@
             "enum": [
                 "ATI"
             ],
-            "propertyOrder": 2
+            "propertyOrder": 3
         },
         "batchInformation": {
+            "Title": "Additional batch information",
             "type": "string",
-            "propertyOrder": 3
+            "propertyOrder": 4
+        },
+        "files": {
+            "title": "Associated Files",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/fileUpload"
+            },
+            "propertyOrder": 5
         },
         "characteristics": {
             "title": "Powder Characteristics",
@@ -48,21 +60,23 @@
                     "type": "number",
                     "format": "grid",
                     "minimum": 10,
-                    "maximum": 50
+                    "maximum": 50,
+                    "propertyOrder": 0
                 },
                 "virginPercent": {
                     "title": "Virgin Powder %",
                     "type": "number",
                     "format": "grid",
                     "minimum": 0,
-                    "maximum": 100
+                    "maximum": 100,
+                    "propertyOrder": 1
                 }
             },
             "required": [
                 "powderSize",
                 "virginPercent"
             ],
-            "propertyOrder": 4
+            "propertyOrder": 6
         }
     },
     "required": [
@@ -74,7 +88,7 @@
     ],
     "definitions": {
         "compositionElement": {
-            "title": "Powder Composition Element",
+            "title": "Element",
             "type": "object",
             "properties": {
                 "element": {
