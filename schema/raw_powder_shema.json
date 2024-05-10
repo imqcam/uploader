@@ -55,14 +55,14 @@
                     "title": "Min Particle Size (microns)",
                     "type": "number",
                     "minimum": 10,
-                    "maximum": 50,
+                    "maximum": 100,
                     "propertyOrder": 0
                 },
                 "maxSize": {
                     "title": "Max Particle Size (microns)",
                     "type": "number",
                     "minimum": 10,
-                    "maximum": 50,
+                    "maximum": 100,
                     "propertyOrder": 1
                 },
                 "virginPercent": {
