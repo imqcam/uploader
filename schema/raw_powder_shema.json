@@ -47,23 +47,31 @@
             "type": "object",
             "format": "grid",
             "properties": {
-                "size": {
-                    "title": "Powder Size (microns)",
+                "minSize": {
+                    "title": "Min Particle Size (microns)",
                     "type": "number",
                     "minimum": 10,
                     "maximum": 50,
                     "propertyOrder": 0
+                },
+                "maxSize": {
+                    "title": "Max Particle Size (microns)",
+                    "type": "number",
+                    "minimum": 10,
+                    "maximum": 50,
+                    "propertyOrder": 1
                 },
                 "virginPercent": {
                     "title": "Virgin Powder %",
                     "type": "number",
                     "minimum": 0,
                     "maximum": 100,
-                    "propertyOrder": 1
+                    "propertyOrder": 2
                 }
             },
             "required": [
-                "powderSize",
+                "minSize",
+                "maxSize",
                 "virginPercent"
             ],
             "propertyOrder": 5
