@@ -180,7 +180,7 @@
                         "WET (Inductively coupled plasma emission)",
                         "GAS (Inert gas fusion)",
                         "CS (Combustion/IR detection)",
-                        "N/A (for balance)"
+                        "NA (for balance)"
                     ],
                     "propertyOrder": 4
                 }
