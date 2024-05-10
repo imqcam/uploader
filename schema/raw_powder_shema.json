@@ -10,36 +10,50 @@
             "pattern": "^[a-zA-Z0-9_]+$"
         },
         "alloy": {
+            "title": "Powder Alloy",
             "type": "string",
             "enum": [
                 "Ti-6Al-4V"
-            ]
+            ],
+            "propertyOrder": 0
         },
         "composition": {
+            "title": "Powder Composition",
+            "description": "Elements present in the powder with weight percents",
             "type": "array",
             "items": {
                 "$ref": "#/definitions/compositionElement"
             },
-            "minItems": 1
+            "minItems": 1,
+            "propertyOrder": 1
         },
         "supplyCompany": {
+            "title": "Supply Company",
             "type": "string",
             "enum": [
                 "ATI"
-            ]
+            ],
+            "propertyOrder": 2
+        },
+        "batchInformation": {
+            "type": "string",
+            "propertyOrder": 3
         },
         "characteristics": {
+            "title": "Powder Characteristics",
             "type": "object",
             "properties": {
                 "size": {
                     "title": "Powder Size (microns)",
                     "type": "number",
+                    "format": "grid",
                     "minimum": 10,
                     "maximum": 50
                 },
                 "virginPercent": {
                     "title": "Virgin Powder %",
                     "type": "number",
+                    "format": "grid",
                     "minimum": 0,
                     "maximum": 100
                 }
@@ -47,10 +61,8 @@
             "required": [
                 "powderSize",
                 "virginPercent"
-            ]
-        },
-        "batchInformation": {
-            "type": "string"
+            ],
+            "propertyOrder": 4
         }
     },
     "required": [
@@ -63,7 +75,6 @@
     "definitions": {
         "compositionElement": {
             "title": "Powder Composition Element",
-            "description": "A single element relevant to a raw powder composition",
             "type": "object",
             "properties": {
                 "element": {
