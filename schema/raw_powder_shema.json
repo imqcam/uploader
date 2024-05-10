@@ -118,17 +118,37 @@
                     ],
                     "propertyOrder": 0
                 },
-                "weightPercent": {
-                    "title": "Weight %",
+                "amount": {
+                    "title": "Amount",
                     "type": "number",
                     "minimum": 0,
                     "maximum": 100,
                     "propertyOrder": 1
+                },
+                "unit": {
+                    "title": "Unit of measure",
+                    "type": "string",
+                    "enum": [
+                        "%"
+                    ],
+                    "propertyOrder": 2
+                },
+                "method": {
+                    "title": "Method",
+                    "type": "string",
+                    "enum": [
+                        "WET (Inductively coupled plasma emission)",
+                        "GAS (Inert gas fusion)",
+                        "CS (Combustion/IR detection)"
+                    ],
+                    "propertyOrder": 3
                 }
             },
             "required": [
                 "element",
-                "weightPercent"
+                "amount",
+                "unit",
+                "method"
             ]
         },
         "fileUpload": {
