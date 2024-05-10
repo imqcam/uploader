@@ -125,13 +125,20 @@
                     "maximum": 100,
                     "propertyOrder": 1
                 },
+                "isBalance": {
+                    "title": "Balance?",
+                    "type": "boolean",
+                    "format": "checkbox",
+                    "propertyOrder": 2
+                },
                 "unit": {
                     "title": "Unit of measure",
                     "type": "string",
                     "enum": [
-                        "%"
+                        "%",
+                        "max %"
                     ],
-                    "propertyOrder": 2
+                    "propertyOrder": 3
                 },
                 "method": {
                     "title": "Method",
@@ -141,7 +148,7 @@
                         "GAS (Inert gas fusion)",
                         "CS (Combustion/IR detection)"
                     ],
-                    "propertyOrder": 3
+                    "propertyOrder": 4
                 }
             },
             "required": [
