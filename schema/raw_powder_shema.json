@@ -179,7 +179,8 @@
                     "enum": [
                         "WET (Inductively coupled plasma emission)",
                         "GAS (Inert gas fusion)",
-                        "CS (Combustion/IR detection)"
+                        "CS (Combustion/IR detection)",
+                        "N/A (for balance)"
                     ],
                     "propertyOrder": 4
                 }
