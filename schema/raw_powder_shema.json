@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Raw Feed Powder Metadata",
+    "title": "Raw Feed Powder",
     "description": "Metadata associated with a batch of powder used as raw material for metals added manufacturing",
     "type": "object",
     "properties": {
@@ -20,6 +20,19 @@
             ],
             "propertyOrder": 1
         },
+        "supplyCompany": {
+            "title": "Supply Company",
+            "type": "string",
+            "enum": [
+                "ATI"
+            ],
+            "propertyOrder": 2
+        },
+        "batchInformation": {
+            "title": "Additional batch information",
+            "type": "string",
+            "propertyOrder": 3
+        },
         "composition": {
             "title": "Powder Composition",
             "type": "array",
@@ -27,28 +40,7 @@
                 "$ref": "#/definitions/compositionElement"
             },
             "minItems": 1,
-            "propertyOrder": 2
-        },
-        "supplyCompany": {
-            "title": "Supply Company",
-            "type": "string",
-            "enum": [
-                "ATI"
-            ],
-            "propertyOrder": 3
-        },
-        "batchInformation": {
-            "title": "Additional batch information",
-            "type": "string",
             "propertyOrder": 4
-        },
-        "files": {
-            "title": "Associated Files",
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/fileUpload"
-            },
-            "propertyOrder": 5
         },
         "characteristics": {
             "title": "Powder Characteristics",
@@ -74,6 +66,14 @@
                 "powderSize",
                 "virginPercent"
             ],
+            "propertyOrder": 5
+        },
+        "files": {
+            "title": "Associated Files",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/fileUpload"
+            },
             "propertyOrder": 6
         }
     },
@@ -91,6 +91,7 @@
             "format": "grid",
             "properties": {
                 "element": {
+                    "title": "Element",
                     "type": "string",
                     "enum": [
                         "Ti",
@@ -131,7 +132,7 @@
             ]
         },
         "fileUpload": {
-            "title": "file",
+            "title": "File",
             "type": "object",
             "format": "grid",
             "properties": {
@@ -141,9 +142,10 @@
                     "propertyOrder": 0
                 },
                 "fileType": {
+                    "title": "Type of File",
                     "type": "string",
                     "enum": [
-                        "Manufacturer report"
+                        "Manufacturer report PDF"
                     ],
                     "propertyOrder": 1
                 },
