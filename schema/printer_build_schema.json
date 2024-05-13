@@ -4,13 +4,21 @@
     "description": "Metadata for a single build using a metals additive manufacturing printer",
     "type": "object",
     "properties": {
+        "printerBuildID": {
+            "title": "Printer Build ID",
+            "description": "Must be unique among all 'Printer Build' entries",
+            "type": "string",
+            "format": "custom",
+            "pattern": "^[a-zA-Z0-9_]+$",
+            "propertyOrder": 0
+        },
         "buildMachine": {
             "title": "Build Machine",
             "type": "object",
             "enum": [
                 "EOS M290 at CMU"
             ],
-            "propertyOrder": 0
+            "propertyOrder": 1
         },
         "buildPlate": {
             "title": "Build Plate",
@@ -37,7 +45,7 @@
                 "material",
                 "temperature"
             ],
-            "propertyOrder": 1
+            "propertyOrder": 2
         },
         "flowGas": {
             "title": "Flow Gas",
@@ -73,7 +81,7 @@
                 "flowRate",
                 "o2Concentration"
             ],
-            "propertyOrder": 2
+            "propertyOrder": 3
         },
         "recoater": {
             "title": "Recoater",
@@ -104,7 +112,7 @@
                 "material",
                 "style"
             ],
-            "propertyOrder": 3
+            "propertyOrder": 4
         },
         "buildParameters": {
             "title": "Build Parameters",
@@ -137,7 +145,7 @@
                 "upskinParameters",
                 "downskinParameters"
             ],
-            "propertyOrder": 4
+            "propertyOrder": 5
         },
         "userParameters": {
             "title": "User Parameters",
@@ -174,17 +182,17 @@
                 "runTime",
                 "teamMembers"
             ],
-            "propertyOrder": 5
+            "propertyOrder": 6
         },
         "openjzFile": {
             "title": "Build File (*.openjz)",
             "$ref": "#/definitions/fileUpload",
-            "propertyOrder": 6
+            "propertyOrder": 7
         },
         "eosReportFile": {
             "title": "EOS Job Quality Report (PDF)",
             "$ref": "#/definitions/fileUpload",
-            "propertyOrder": 7
+            "propertyOrder": 8
         },
         "misc": {
             "title": "Additional information",
@@ -193,10 +201,11 @@
             "items": {
                 "$ref": "#/definitions/keyValue"
             },
-            "propertyOrder": 8
+            "propertyOrder": 9
         }
     },
     "required": [
+        "printerBuildID",
         "buildMachine",
         "buildPlate",
         "flowGas",
