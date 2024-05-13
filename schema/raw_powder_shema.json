@@ -188,6 +188,7 @@
             "required": [
                 "element",
                 "amount",
+                "isBalance",
                 "unit",
                 "method"
             ]

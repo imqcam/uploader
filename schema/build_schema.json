@@ -1,155 +1,214 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Build Metadata",
+    "title": "Printer Build",
     "description": "Metadata for a single build using a metals additive manufacturing printer",
     "type": "object",
     "properties": {
         "buildMachine": {
-            "type": "string",
-            "oneOf": [
-                {
-                    "title": "EOS M290 'short name' at CMU",
-                    "const": "CMU_EOS_M290_short_name"
-                },
-                {
-                    "title": "EOS M300 'short name' at NASA",
-                    "const": "NASA_EOS_M300_short_name"
-                }
-            ]
-        },
-        "buildSoftware": {
-            "title": "Design & Build Software",
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/software"
-            }
+            "title": "Build Machine",
+            "type": "object",
+            "enum": [
+                "EOS M290 at CMU"
+            ],
+            "propertyOrder": 0
         },
         "buildPlate": {
+            "title": "Build Plate",
             "type": "object",
+            "format": "grid",
             "properties": {
-                "buildPlateMaterial": {
+                "material": {
                     "title": "Material",
                     "type": "string",
                     "enum": [
-                        "Ti64"
-                    ]
+                        "Ti-6Al-4V"
+                    ],
+                    "propertyOrder": 0
                 },
-                "buildPlateTemperature": {
+                "temperature": {
                     "title": "Temperature (deg C)",
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 450
+                    "maximum": 450,
+                    "propertyOrder": 1
                 }
-            }
+            },
+            "required": [
+                "material",
+                "temperature"
+            ],
+            "propertyOrder": 1
         },
         "flowGas": {
+            "title": "Flow Gas",
             "type": "object",
+            "format": "grid",
             "properties": {
-                "flowGasType": {
+                "type": {
                     "title": "Type",
                     "type": "string",
                     "enum": [
                         "Ar",
                         "N2"
-                    ]
+                    ],
+                    "propertyOrder": 0
                 },
-                "flowGasFlowRate": {
+                "flowRate": {
                     "title": "Flow Rate (lpm)",
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 10
+                    "maximum": 10,
+                    "propertyOrder": 1
+                },
+                "o2Concentration": {
+                    "title": "O2 concentration (%)",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "propertyOrder": 2
                 }
-            }
+            },
+            "required": [
+                "type",
+                "flowRate",
+                "o2Concentration"
+            ],
+            "propertyOrder": 2
         },
         "recoater": {
+            "title": "Recoater",
             "type": "object",
+            "format": "grid",
             "properties": {
-                "recoaterMaterial": {
+                "material": {
                     "title": "Material",
                     "type": "string",
                     "enum": [
                         "metal",
                         "rubber"
-                    ]
+                    ],
+                    "propertyOrder": 0
                 },
-                "recoaterStyle": {
+                "style": {
                     "title": "Style",
                     "type": "string",
                     "enum": [
                         "rake",
                         "roller",
                         "blade"
-                    ]
+                    ],
+                    "propertyOrder": 1
                 }
-            }
+            },
+            "required": [
+                "material",
+                "style"
+            ],
+            "propertyOrder": 3
         },
         "buildParameters": {
+            "title": "Build Parameters",
             "type": "object",
             "properties": {
                 "contouringParameters": {
-                    "$ref": "#/definitions/buildParameterSet"
+                    "title": "Contouring Parameters",
+                    "$ref": "#/definitions/buildParameterSet",
+                    "propertyOrder": 0
                 },
                 "infillParameters": {
-                    "$ref": "#/definitions/buildParameterSet"
+                    "title": "Infill Parameters",
+                    "$ref": "#/definitions/buildParameterSet",
+                    "propertyOrder": 1
                 },
                 "upskinParameters": {
-                    "$ref": "#/definitions/buildParameterSet"
+                    "title": "Upskin Parameters",
+                    "$ref": "#/definitions/buildParameterSet",
+                    "propertyOrder": 2
                 },
                 "downskinParameters": {
-                    "$ref": "#/definitions/buildParameterSet"
+                    "title": "Downskin Parameters",
+                    "$ref": "#/definitions/buildParameterSet",
+                    "propertyOrder": 3
                 }
-            }
+            },
+            "required": [
+                "contouringParameters",
+                "infillParameters",
+                "upskinParameters",
+                "downskinParameters"
+            ],
+            "propertyOrder": 4
         },
         "userParameters": {
+            "title": "User Parameters",
             "type": "object",
             "properties": {
                 "runDate": {
+                    "title": "Run date",
                     "type": "string",
-                    "format": "date"
+                    "format": "date",
+                    "propertyOrder": 0
                 },
                 "runTime": {
+                    "title": "Run time",
                     "type": "string",
-                    "format": "time"
+                    "format": "time",
+                    "propertyOrder": 1
                 },
                 "teamMembers": {
+                    "title": "Personnel involved",
                     "type": "array",
                     "items": {
                         "type": "string",
                         "enum": [
                             "Evan Adcock",
+                            "Nick Lamprinakos",
                             "Katie O'Donnell"
                         ]
-                    }
+                    },
+                    "propertyOrder": 2
                 }
-            }
+            },
+            "required": [
+                "runDate",
+                "runTime",
+                "teamMembers"
+            ],
+            "propertyOrder": 5
+        },
+        "openjzFile": {
+            "title": "Build File (*.openjz)",
+            "$ref": "#/definitions/fileUpload",
+            "propertyOrder": 6
+        },
+        "eosReportFile": {
+            "title": "EOS Job Quality Report (PDF)",
+            "$ref": "#/definitions/fileUpload",
+            "propertyOrder": 7
+        },
+        "misc": {
+            "title": "Additional information",
+            "description": "String-only keys/values for misc. metadata (not validated)",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/keyValue"
+            },
+            "propertyOrder": 8
         }
     },
-    "required": [],
+    "required": [
+        "buildMachine",
+        "buildPlate",
+        "flowGas",
+        "recoater",
+        "buildParameters",
+        "userParameters",
+        "openjzFile",
+        "eosReportFile"
+    ],
     "definitions": {
-        "software": {
-            "title": "Software",
-            "description": "A software used in the build process",
-            "type": "object",
-            "properties": {
-                "softwareName": {
-                    "type": "string"
-                },
-                "softwareVersion": {
-                    "type": "string",
-                    "pattern": "^v.*"
-                },
-                "softwareType": {
-                    "type": "string",
-                    "enum": [
-                        "design",
-                        "build"
-                    ]
-                }
-            }
-        },
         "buildParameterSet": {
             "title": "Build parameter set",
-            "description": "A full set of build-specific parameters",
             "type": "object",
             "properties": {
                 "laserPower": {
@@ -162,7 +221,7 @@
                     "title": "Laser Velocity (m/s)",
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 7
+                    "maximum": 10
                 },
                 "hatchSpacing": {
                     "title": "Hatch Spacing (microns)",
@@ -176,7 +235,57 @@
                     "minimum": 0,
                     "maximum": 100
                 }
+            },
+            "required": [
+                "laserPower",
+                "laserVelocity",
+                "hatchSpacing",
+                "layerThickness"
+            ]
+        },
+        "fileUpload": {
+            "title": "File",
+            "type": "object",
+            "format": "grid",
+            "properties": {
+                "file": {
+                    "title": "Upload file",
+                    "type": "string",
+                    "propertyOrder": 0
+                },
+                "button": {
+                    "title": "Browse",
+                    "format": "button",
+                    "options": {
+                        "button": {
+                            "action": "button1CB",
+                            "uploadFor": "file"
+                        }
+                    },
+                    "propertyOrder": 2
+                }
             }
+        },
+        "keyValue": {
+            "title": "Misc. metadata",
+            "type": "object",
+            "format": "grid",
+            "properties": {
+                "key": {
+                    "title": "Key",
+                    "type": "string",
+                    "propertyOrder": 0
+                },
+                "value": {
+                    "title": "Value",
+                    "type": "string",
+                    "propertyOrder": 1
+                }
+            },
+            "required": [
+                "key",
+                "value"
+            ]
         }
     }
 }
