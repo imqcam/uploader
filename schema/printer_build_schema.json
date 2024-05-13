@@ -234,10 +234,10 @@
                     "maximum": 370
                 },
                 "laserVelocity": {
-                    "title": "Laser Velocity (m/s)",
+                    "title": "Laser Velocity (mm/s)",
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 10
+                    "maximum": 10000
                 },
                 "hatchSpacing": {
                     "title": "Hatch Spacing (microns)",
