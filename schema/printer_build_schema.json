@@ -20,7 +20,7 @@
             ],
             "propertyOrder": 1
         },
-        "rawPowder": {
+        "rawPowderID": {
             "title": "Raw Powder",
             "description": "Reference to a previously-defined 'Raw Powder' entry",
             "type": "string",
