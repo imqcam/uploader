@@ -85,7 +85,6 @@
             },
             "required": [
                 "type",
-                "flowRate",
                 "o2Concentration"
             ],
             "propertyOrder": 4
