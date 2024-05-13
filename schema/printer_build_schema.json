@@ -99,7 +99,8 @@
                     "type": "string",
                     "enum": [
                         "metal",
-                        "rubber"
+                        "rubber",
+                        "ceramic"
                     ],
                     "propertyOrder": 0
                 },
