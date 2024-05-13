@@ -20,6 +20,13 @@
             ],
             "propertyOrder": 1
         },
+        "rawPowder": {
+            "title": "Raw Powder",
+            "description": "Reference to a previously-defined 'Raw Powder' entry",
+            "type": "string",
+            "enumsource": "girder.formId:663e6d21b18fa1c426e939ab",
+            "propertyOrder": 2
+        },
         "buildPlate": {
             "title": "Build Plate",
             "type": "object",
@@ -45,7 +52,7 @@
                 "material",
                 "temperature"
             ],
-            "propertyOrder": 2
+            "propertyOrder": 3
         },
         "flowGas": {
             "title": "Flow Gas",
@@ -81,7 +88,7 @@
                 "flowRate",
                 "o2Concentration"
             ],
-            "propertyOrder": 3
+            "propertyOrder": 4
         },
         "recoater": {
             "title": "Recoater",
@@ -112,7 +119,7 @@
                 "material",
                 "style"
             ],
-            "propertyOrder": 4
+            "propertyOrder": 5
         },
         "buildParameters": {
             "title": "Build Parameters",
@@ -145,7 +152,7 @@
                 "upskinParameters",
                 "downskinParameters"
             ],
-            "propertyOrder": 5
+            "propertyOrder": 6
         },
         "userParameters": {
             "title": "User Parameters",
@@ -182,17 +189,17 @@
                 "runTime",
                 "teamMembers"
             ],
-            "propertyOrder": 6
+            "propertyOrder": 7
         },
         "openjzFile": {
             "title": "Build File (*.openjz)",
             "$ref": "#/definitions/fileUpload",
-            "propertyOrder": 7
+            "propertyOrder": 8
         },
         "eosReportFile": {
             "title": "EOS Job Quality Report (PDF)",
             "$ref": "#/definitions/fileUpload",
-            "propertyOrder": 8
+            "propertyOrder": 9
         },
         "misc": {
             "title": "Additional information",
@@ -201,7 +208,7 @@
             "items": {
                 "$ref": "#/definitions/keyValue"
             },
-            "propertyOrder": 9
+            "propertyOrder": 10
         }
     },
     "required": [
