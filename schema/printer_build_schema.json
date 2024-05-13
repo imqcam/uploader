@@ -14,7 +14,7 @@
         },
         "buildMachine": {
             "title": "Build Machine",
-            "type": "object",
+            "type": "string",
             "enum": [
                 "EOS M290 at CMU"
             ],
