@@ -24,7 +24,11 @@
             "title": "Supply Company",
             "type": "string",
             "enum": [
-                "ATI"
+                "ATI",
+                "Elementum",
+                "Carpenter",
+                "EOS",
+                "Kennametal"
             ],
             "propertyOrder": 2
         },
