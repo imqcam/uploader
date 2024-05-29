@@ -83,8 +83,7 @@
             },
             "required": [
                 "minSize",
-                "maxSize",
-                "virginPercent"
+                "maxSize"
             ],
             "propertyOrder": 5
         },
