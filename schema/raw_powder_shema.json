@@ -66,25 +66,42 @@
                     "maximum": 100,
                     "propertyOrder": 0
                 },
+                "tenthPercentileSize": {
+                    "title": "D10 Particle Size (microns)",
+                    "type": "number",
+                    "minimum": 10,
+                    "maximum": 100,
+                    "propertyOrder": 1
+                },
+                "fiftiethPercentileSize": {
+                    "title": "D50 Particle Size (microns)",
+                    "type": "number",
+                    "minimum": 10,
+                    "maximum": 100,
+                    "propertyOrder": 2
+                },
+                "ninetiethPercentileSize": {
+                    "title": "D90 Particle Size (microns)",
+                    "type": "number",
+                    "minimum": 10,
+                    "maximum": 100,
+                    "propertyOrder": 3
+                },
                 "maxSize": {
                     "title": "Max Particle Size (microns)",
                     "type": "number",
                     "minimum": 10,
                     "maximum": 100,
-                    "propertyOrder": 1
+                    "propertyOrder": 4
                 },
                 "virginPercent": {
                     "title": "Virgin Powder %",
                     "type": "number",
                     "minimum": 0,
                     "maximum": 100,
-                    "propertyOrder": 2
+                    "propertyOrder": 5
                 }
             },
-            "required": [
-                "minSize",
-                "maxSize"
-            ],
             "propertyOrder": 5
         },
         "files": {
