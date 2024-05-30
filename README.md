@@ -33,7 +33,11 @@ Navigate to this repository's directory, and install the `imqcam_uploader` packa
 
 ## Running programs
 
-To upload a single file, run:
+After installing this package, you can run the single-file uploader using a command line tool or by importing it in a Python script.
+
+### From the command line
+
+To upload a single file using the command line utility, run:
 
     upload_file [filepath] --relative_to [relative_to] --collection_name [collection_name] --root_folder_path [root_folder_path] --metadata_json [metadata_json]
 
@@ -46,6 +50,27 @@ Where:
 - `[metadata_json]` is a JSON-formatted string, or the path to a valid JSON file on disk, specifying the JSON metadata that should be associated with the uploaded file in Girder. The version of the uploader code that's running and a checksum hash will be added as metadata in addition to any parameters specified here.
 
 To see the full list of options for running the program, add the `-h` flag to the command.
+
+### In a Python script
+
+To use the existing uploader in a Python script to upload individual files on disk, you can do something like this:
+
+    # import the uploader
+    from imqcam_uploaders.uploaders.file_uploader import IMQCAMFileUploader
+
+    # create the uploader object (you'll need the API URL and Key that you can get from Maggie)
+    uploader = IMQCAMFileUploader(GIRDER_API_URL, GIRDER_API_KEY)
+
+    # upload a single file with some json-formatted metadata (you can run this in a loop to do many files, or traverse a directory tree on your system)
+    uploader.upload_file(
+        path_to_file_on_disk,
+        json_formatted_metadata_str,
+        relative_to=optional_path_to_root_directory_on_disk,
+        collection_name=collection_name,
+        root_folder_path=girder_folder_name,
+    )
+
+Please reach out to Maggie on the IMQCAM Slack for more details and help with your particular use case. See above about the command line use case for more explanation of the parameters referenced in the example.
 
 ## Running tests
 
