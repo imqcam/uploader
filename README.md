@@ -56,22 +56,22 @@ To see the full list of options for running the program, add the `-h` flag to th
 To use the existing uploader in a Python script to upload individual files on disk, you can do something like this:
 
 ```python
-    # import the uploader
-    from imqcam_uploaders.uploaders.file_uploader import IMQCAMFileUploader
+# import the uploader
+from imqcam_uploaders.uploaders.file_uploader import IMQCAMFileUploader
 
-    # create the uploader object (you'll need the API URL and Key that you can get from Maggie)
-    uploader = IMQCAMFileUploader(GIRDER_API_URL, GIRDER_API_KEY)
+# create the uploader object (you'll need the API URL and Key that you can get from Maggie)
+uploader = IMQCAMFileUploader(GIRDER_API_URL, GIRDER_API_KEY)
 
-    # upload a single file with some json-formatted metadata
-    # (you can run this in a loop to do many files, or
-    # traverse a directory tree on your system)
-    uploader.upload_file(
-        path_to_file_on_disk,
-        json_formatted_metadata_str,
-        relative_to=optional_path_to_root_directory_on_disk,
-        collection_name=collection_name,
-        root_folder_path=girder_folder_name,
-    )
+# upload a single file with some json-formatted metadata
+# (you can run this in a loop to do many files, or
+# traverse a directory tree on your system)
+uploader.upload_file(
+    path_to_file_on_disk,
+    json_formatted_metadata_str,
+    relative_to=optional_path_to_root_directory_on_disk,
+    collection_name=collection_name,
+    root_folder_path=girder_folder_name,
+)
 ```
 
 Please reach out to Maggie on the IMQCAM Slack for more details and help with your particular use case. See above about the command line use case for more explanation of the parameters referenced in the example.
