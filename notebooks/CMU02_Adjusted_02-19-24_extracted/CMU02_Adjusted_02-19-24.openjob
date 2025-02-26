@@ -1,0 +1,1205 @@
+<openjob version="1.4.4" creator="EOSPRINT" creator_version="2.5.9.58707">
+  <target>M291</target>
+  <paramset name="Ti64_PerformanceM291 1.10" version="1.10">
+    <materialname>Ti64</materialname>
+    <materialthickness>0.03</materialthickness>
+  </paramset>
+  <absolutepositioning enabled="false">
+    <positioningpoints />
+  </absolutepositioning>
+  <parts>
+    <part file="parts\microstructure_cube_10x10x10mm.STL" name="microstructure_cube_10x10x10mm" is_support="false" customdataid="{a8bdc1a0-9b7a-44f8-a5ed-6352bde779c8}">
+      <parameter>Microstructurecube</parameter>
+      <translation>
+        <x>109.6695</x>
+        <y>42.6828</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{fe9c36fa-74b0-443f-9c2a-66ac2bd8bde8}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\microstructure_cube_10x10x10mm.STL" name="microstructure_cube_10x10x10mm-Copy-1" is_support="false" customdataid="{8cf63a13-95a6-4538-8eeb-277a86d9ff22}">
+      <parameter>Microstructurecube</parameter>
+      <translation>
+        <x>141.7045</x>
+        <y>42.6828</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{a9d43685-a1e3-40a7-9a02-d946aefc1cc6}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\microstructure_cube_10x10x10mm_moat.STL" name="microstructure_cube_10x10x10mm_moat" is_support="false" customdataid="{a6aac612-1936-44e2-abe2-0aa78a82a895}">
+      <parameter>Microstructurecube</parameter>
+      <translation>
+        <x>162.5663</x>
+        <y>28.2462</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{73601a0e-8fb3-4a3e-9438-c8a58094f34a}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\microstructure_cube_10x10x10mm_moat.STL" name="microstructure_cube_10x10x10mm_moat" is_support="false" customdataid="{da5a418d-1205-4145-b12f-aa4ecc5623a4}">
+      <parameter>Microstructurecube</parameter>
+      <translation>
+        <x>198.4711</x>
+        <y>29.4827</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{0ccd932d-7233-48e9-bda2-939d5726c08f}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v031.STL" name="v031" is_support="false" customdataid="{66acd54a-e242-4c5a-b772-40798d012577}">
+      <translation>
+        <x>26.1282</x>
+        <y>41.5251</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{11d3a9ea-c88e-450c-8694-e26b6a2cad82}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v032.STL" name="v032" is_support="false" customdataid="{753e1187-841f-41a1-ab7c-7087734d8daf}">
+      <translation>
+        <x>59.9548</x>
+        <y>41.2918</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{bccc1391-0b9a-4744-afa1-2b7ebdbcb697}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v025.STL" name="v025" is_support="false" customdataid="{faf13b66-1b1c-4e40-9966-93b0bfb258b8}">
+      <translation>
+        <x>26.3615</x>
+        <y>72.5523</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{a20830e6-8637-4f78-aed1-e14df77bb78c}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v026.STL" name="v026" is_support="false" customdataid="{9ca14aba-3d38-4ccc-bd35-190974adb857}">
+      <translation>
+        <x>60.4214</x>
+        <y>71.8525</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{472faaf9-dda1-404f-8ee7-7918c17b9c2f}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v027.STL" name="v027" is_support="false" customdataid="{d2072926-0e6a-465d-9dbd-2000dc2a642b}">
+      <translation>
+        <x>92.615</x>
+        <y>71.6192</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{c3e5f843-0b90-4d92-8396-c803ab53e888}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v028.STL" name="v028" is_support="false" customdataid="{a2606899-f439-4c4c-8a22-d8924d01aa77}">
+      <translation>
+        <x>124.3421</x>
+        <y>70.9193</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{b11db8ee-42be-4b94-bf16-cfa9f1c5957b}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v029.STL" name="v029" is_support="false" customdataid="{364ae0ca-fc2d-4ba7-984a-8bf6f76b1b7a}">
+      <translation>
+        <x>156.5358</x>
+        <y>70.4527</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{da919d20-24ba-424c-89c0-dc8622a9a7d6}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v030.STL" name="v030" is_support="false" customdataid="{a2aa940b-7d88-45d7-b163-b8b9fe8b5172}">
+      <translation>
+        <x>191.7621</x>
+        <y>69.9862</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{bb0ce7a9-b174-4f51-a784-82220c245b7c}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v019.STL" name="v019" is_support="false" customdataid="{b35a6a20-1ebb-4af7-a9f4-f2f1052c709c}">
+      <translation>
+        <x>27.1892</x>
+        <y>102.2428</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{5cf49e42-16ca-4725-b6bc-6e05763d3966}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v020.STL" name="v020" is_support="false" customdataid="{f21a6822-76b9-4d92-a59e-73a9ddb453f2}">
+      <translation>
+        <x>60.0428</x>
+        <y>101.9595</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{baff46f1-7455-4fdd-8dcd-1b2df6a6f279}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v021.STL" name="v021" is_support="false" customdataid="{3f9a074b-a31e-4039-b56b-b7f31a869a56}">
+      <translation>
+        <x>92.4257</x>
+        <y>101.609</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{3f659f0c-150b-43c6-92c1-779e3d3a8043}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v022.STL" name="v022" is_support="false" customdataid="{6c20228e-106a-4f38-9a6c-a2cf0a382727}">
+      <translation>
+        <x>124.9004</x>
+        <y>101.1099</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{b785a38e-28fc-42b5-8a6d-0c282cf62b07}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v023.STL" name="v023" is_support="false" customdataid="{19332759-891d-4112-8168-fa3da41dfd11}">
+      <translation>
+        <x>160.0198</x>
+        <y>100.5435</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{6a495104-bfe5-4d89-8855-ec612f9c802a}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v024.STL" name="v024" is_support="false" customdataid="{9ec61d74-aeb3-4a91-bc23-79d8d79380ca}">
+      <translation>
+        <x>191.1741</x>
+        <y>101.3931</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{ec465397-738d-4c34-bb05-a445edd44845}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v013.STL" name="v013" is_support="false" customdataid="{dd838798-9077-4f76-a8a5-47abc9497d96}">
+      <translation>
+        <x>27.1166</x>
+        <y>134.9294</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{4913a695-2245-4229-90b7-16cfa356fa67}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v014.STL" name="v014" is_support="false" customdataid="{295b5fe9-0ae9-4f0d-a160-38ae65f6f198}">
+      <translation>
+        <x>59.7871</x>
+        <y>134.276</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{b5b87656-eb16-49dd-8f42-b5fd7c000619}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v015.STL" name="v015" is_support="false" customdataid="{402bc55b-f771-44a9-84e2-fb3a8eee541d}">
+      <translation>
+        <x>92.4577</x>
+        <y>133.9493</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{ff3bdc12-b7e7-4489-9585-564a7ec3ef56}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v016.STL" name="v016" is_support="false" customdataid="{ccda6e41-3735-496a-b22f-6e600d85783a}">
+      <translation>
+        <x>125.455</x>
+        <y>133.2959</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{b7ca94dc-037f-4054-b5db-27283120d4a1}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v017.STL" name="v017" is_support="false" customdataid="{2378ad00-60b4-49bb-936d-32e44b7df2ec}">
+      <translation>
+        <x>158.7789</x>
+        <y>133.9493</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{1372ef30-8a93-4a8f-826e-ae9926367998}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v018.STL" name="v018" is_support="false" customdataid="{2bbfee96-7d39-4e73-aafb-5e3e59d48fd3}">
+      <translation>
+        <x>191.4495</x>
+        <y>134.6027</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{d732f9c2-adcd-4399-bf30-67b736381c26}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v007.STL" name="v007" is_support="false" customdataid="{3bcdfdf9-a53d-429d-bb1c-8fb1f3d8ef39}">
+      <translation>
+        <x>29.1902</x>
+        <y>168.5464</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{9827f1df-bcb4-41e3-9503-01a0a34769fa}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v008.STL" name="v008" is_support="false" customdataid="{5d6ff9b5-5af4-40bc-81f1-ec212fa6fd61}">
+      <translation>
+        <x>60.6756</x>
+        <y>167.9385</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{3f640adf-a7bd-4c4c-9941-bfe4a5c125ce}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v009.STL" name="v009" is_support="false" customdataid="{3df1ec52-58b5-4834-80a1-670542d63865}">
+      <translation>
+        <x>93.6142</x>
+        <y>167.6937</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{2080c47e-5ece-482e-b160-f6f8e618f411}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v010.STL" name="v010" is_support="false" customdataid="{a6293065-24ed-48b8-a414-20b7840dfa70}">
+      <translation>
+        <x>127.0266</x>
+        <y>167.862</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{764536a6-c18a-46a9-acae-92b8c8ba410b}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v011.STL" name="v011" is_support="false" customdataid="{2e075e50-add5-4199-b754-6015c1c50df3}">
+      <translation>
+        <x>158.4522</x>
+        <y>167.2733</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{4bb906b5-3eaf-40c0-b563-5411fbe1b9f3}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v012.STL" name="v012" is_support="false" customdataid="{628aed72-5e8d-4391-a67c-96e13a152600}">
+      <translation>
+        <x>190.7961</x>
+        <y>165.9665</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{1ed0b488-985b-4871-b2b6-7676d7ee4e87}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v001.STL" name="v001" is_support="false" customdataid="{4f1e8174-cd79-438f-b99e-dbf91c0214db}">
+      <translation>
+        <x>29.2037</x>
+        <y>200.575</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{a85bfd00-722b-45c3-a059-f6e480824adc}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v002.STL" name="v002" is_support="false" customdataid="{46fd005d-3533-49d3-b993-46d6023ffd3f}">
+      <translation>
+        <x>61.2749</x>
+        <y>200.7995</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{188d7cd1-e57d-44e3-8c3d-06259bdc76f7}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v003.STL" name="v003" is_support="false" customdataid="{1f39a30e-7637-47b1-ba2c-f12615c70d6b}">
+      <translation>
+        <x>92.425</x>
+        <y>199.6122</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{4198efe2-d9cb-4894-9291-54a40686f4c5}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v004.STL" name="v004" is_support="false" customdataid="{f0a22fc5-e869-4039-8b80-92e16ef2279a}">
+      <translation>
+        <x>125.4798</x>
+        <y>198.9704</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{b8ef4f12-6470-4f1d-ae72-7c560c2fccce}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v005.STL" name="v005" is_support="false" customdataid="{6a6efb7e-b5aa-4912-b40e-1d58c4569717}">
+      <translation>
+        <x>158.8555</x>
+        <y>199.6123</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{2c0e4652-9a06-490f-b5d1-eee840b8eb83}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+    <part file="parts\v006.STL" name="v006" is_support="false" customdataid="{8cec5ab4-68f0-4e3e-9a57-ed1097498052}">
+      <translation>
+        <x>191.9102</x>
+        <y>198.6495</y>
+        <z>0</z>
+      </translation>
+      <rotation>
+        <z>15</z>
+      </rotation>
+      <scaling>
+        <x>0</x>
+        <y>0</y>
+      </scaling>
+      <coordinateorigin>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </coordinateorigin>
+      <segments>
+        <zsegment name="Segment 1">
+          <parameter>CMU01_PV-1</parameter>
+          <startheight>3</startheight>
+        </zsegment>
+        <zsegment name="Segment 2">
+          <parameter>Tree_Supp</parameter>
+          <startheight>0</startheight>
+        </zsegment>
+      </segments>
+      <beam_compensation>0</beam_compensation>
+      <scalingreferencepoint id="{65f52604-2f7f-40c9-94af-8fbffdd49aa9}">
+        <x>0</x>
+        <y>0</y>
+      </scalingreferencepoint>
+    </part>
+  </parts>
+  <customdata>
+    <eosprintdata actor="http://eos.info/eosprint" version="2.0">
+      <elements />
+    </eosprintdata>
+  </customdata>
+</openjob>
